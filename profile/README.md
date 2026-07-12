@@ -103,6 +103,20 @@ Visit **[tokenaissance.com](https://tokenaissance.com)** to try the platform. Wa
 
 We believe in the open agentic future. Whether you're building a new Skill, improving the FastClaw runtime, or sharing knowledge — pull requests are welcome.
 
+## 🌐 Where to Find Us
+
+Need help? Want to give feedback? We'd love to connect.
+
+<p align="center">
+  <a href="https://x.com/tokenaissance"><img src="https://img.shields.io/badge/X-@tokenaissance-black?style=for-the-badge&logo=x&logoColor=white" alt="X" /></a>
+  <a href="https://discord.gg/bXntC3xhG2"><img src="https://img.shields.io/badge/Discord-Join%20Server-%23143D52?style=for-the-badge&logo=discord&logoColor=white" alt="Discord" /></a>
+</p>
+
+<p align="center">
+  <b>Personal WeChat</b><br/>
+  <img src="assets/wechat-qr.jpg" width="160" alt="WeChat QR" />
+</p>
+
 ---
 <div align="center">
   <i>Empowering the Token Renaissance with Autonomous Intelligence.</i>
