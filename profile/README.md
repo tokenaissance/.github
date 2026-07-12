@@ -30,8 +30,15 @@ Skills are persistent, reusable workflows that extend agent capabilities — thi
 | **[planning-with-files](https://github.com/tokenaissance/planning-with-files)** | 📋 Manus-style persistent markdown planning — the workflow pattern behind the $2B acquisition |
 | **[serenity-aleabitoreddit](https://github.com/tokenaissance/serenity-aleabitoreddit)** | 💰 Finance Skill — Serenity tweet archive + AI supply-chain analysis |
 | **[frontend-slides](https://github.com/tokenaissance/frontend-slides)** | 🎬 Presentation Skill — create beautiful web slides with Claude |
-| **[knowledge-wiki-template](https://github.com/tokenaissance/knowledge-wiki-template)** | 📝 Skill Template — start building your own agent skill from this blueprint |
 | **[bazi-ziwei-skill](https://github.com/tokenaissance/bazi-ziwei-skill)** | 🔮 AI-powered BaZi (八字) + ZiWei (紫微斗数) astrology analysis |
+
+### 📝 Template
+
+Start here to build your own skill:
+
+| Repo | Description |
+|------|-------------|
+| **[knowledge-wiki-template](https://github.com/tokenaissance/knowledge-wiki-template)** | 📝 Skill Template — the canonical blueprint for all Tokenaissance skills |
 
 ### 📚 Knowledge & Infrastructure
 
