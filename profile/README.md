@@ -26,6 +26,7 @@ Skills are persistent, reusable workflows that extend agent capabilities — thi
 | **[agent-html-skills](https://github.com/tokenaissance/agent-html-skills)** | 🗣️ Bidirectional Agent/Human communication protocol skill |
 | **[mastering-technical-sales-skills](https://github.com/tokenaissance/mastering-technical-sales-skills)** | 📘 The Sales Engineer's Handbook — a complete SE playbook |
 | **[yichen-skills](https://github.com/tokenaissance/yichen-skills)** | 🔧 Curated skill collection by Yichen |
+| **[superpowers](https://github.com/tokenaissance/superpowers)** | ⚡ Agentic Coding Skills — a skills framework & software development methodology |
 | **[clean-architecture-skill](https://github.com/tokenaissance/clean-architecture-skill)** | 🏗️ Agentic coding architecture skill — Clean Architecture + SOLID + Musk's 5-step algorithm |
 | **[planning-with-files](https://github.com/tokenaissance/planning-with-files)** | 📋 Manus-style persistent markdown planning — the workflow pattern behind the $2B acquisition |
 | **[serenity-aleabitoreddit](https://github.com/tokenaissance/serenity-aleabitoreddit)** | 💰 Finance Skill — Serenity tweet archive + AI supply-chain analysis |
