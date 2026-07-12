@@ -29,6 +29,7 @@ Skills are persistent, reusable workflows that extend agent capabilities — thi
 | **[mastering-technical-sales-skills](https://github.com/tokenaissance/mastering-technical-sales-skills)** | 📘 The Sales Engineer's Handbook — a complete SE playbook |
 | **[yichen-skills](https://github.com/tokenaissance/yichen-skills)** | 🔧 Curated skill collection by Yichen |
 | **[clean-architecture-skill](https://github.com/tokenaissance/clean-architecture-skill)** | 🏗️ Clean Architecture + SOLID principles + Musk's 5-step algorithm — Claude Code skill |
+| **[planning-with-files](https://github.com/tokenaissance/planning-with-files)** | 📋 Manus-style persistent markdown planning — the workflow pattern behind the $2B acquisition |
 
 ### 📚 Knowledge & Infrastructure
 
