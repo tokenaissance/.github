@@ -38,6 +38,7 @@ Start here to build your own skill:
 
 | Repo | Description |
 |------|-------------|
+| **[hello-agents](https://github.com/tokenaissance/hello-agents)** | 📖 Agent Tutorial & Education — build intelligent agents from scratch |
 | **[knowledge-wiki-template](https://github.com/tokenaissance/knowledge-wiki-template)** | 📝 Skill Template — the canonical blueprint for all Tokenaissance skills |
 
 ### 📚 Knowledge & Infrastructure
