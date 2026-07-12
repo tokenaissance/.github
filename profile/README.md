@@ -1,6 +1,6 @@
 <div align="center">
   <h1>Tokenaissance</h1>
-  <p><b>The Next-Generation Platform for Autonomous Agents & Skills</b></p>
+  <p><b>The Agent Ecosystem — Runtime, Skills, Models, Sandbox, Community</b></p>
   <a href="https://tokenaissance.com">🌐 tokenaissance.com</a>
   <br/>
   <br/>
