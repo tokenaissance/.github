@@ -34,7 +34,6 @@ Skills are persistent, reusable workflows that extend agent capabilities — thi
 | Repo | Description |
 |------|-------------|
 | **[contexto](https://github.com/tokenaissance/contexto)** | 📚 Context engine for long-running AI agents — persistent memory at scale |
-| **[hello-agents](https://github.com/tokenaissance/hello-agents)** | 📖 *Build Intelligent Agents from Scratch* — principle-to-practice tutorial |
 | **[lobu](https://github.com/tokenaissance/lobu)** | 🏢 Multi-tenant autonomous agent platform for organizations |
 | **[searxng-helm](https://github.com/tokenaissance/searxng-helm)** | 🔍 Self-hosted privacy metasearch Helm chart for agent integration |
 
