@@ -28,6 +28,7 @@ Skills are persistent, reusable workflows that extend agent capabilities — thi
 | **[bazi-ziwei-skill](https://github.com/tokenaissance/bazi-ziwei-skill)** | 🔮 AI-powered BaZi (八字) + ZiWei (紫微斗数) astrology analysis |
 | **[mastering-technical-sales-skills](https://github.com/tokenaissance/mastering-technical-sales-skills)** | 📘 The Sales Engineer's Handbook — a complete SE playbook |
 | **[yichen-skills](https://github.com/tokenaissance/yichen-skills)** | 🔧 Curated skill collection by Yichen |
+| **[clean-architecture-skill](https://github.com/tokenaissance/clean-architecture-skill)** | 🏗️ Clean Architecture + SOLID principles + Musk's 5-step algorithm — Claude Code skill |
 
 ### 📚 Knowledge & Infrastructure
 
