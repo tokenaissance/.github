@@ -31,6 +31,7 @@ Skills are persistent, reusable workflows that extend agent capabilities — thi
 | **[serenity-aleabitoreddit](https://github.com/tokenaissance/serenity-aleabitoreddit)** | 💰 Finance Skill — Serenity tweet archive + AI supply-chain analysis |
 | **[frontend-slides](https://github.com/tokenaissance/frontend-slides)** | 🎬 Presentation Skill — create beautiful web slides with Claude |
 | **[barker-stablecoin-skills](https://github.com/tokenaissance/barker-stablecoin-skills)** | 💰 DeFi Skill — stablecoin yield intelligence, real-time APY from 500+ protocols |
+| **[qiqing-liuyu](https://github.com/tokenaissance/qiqing-liuyu)** | 🌊 Soul Skills — 七情六欲 — emotional and spiritual intelligence for AI agents |
 | **[bazi-ziwei-skill](https://github.com/tokenaissance/bazi-ziwei-skill)** | 🔮 AI-powered BaZi (八字) + ZiWei (紫微斗数) astrology analysis |
 
 ### 📝 Template
