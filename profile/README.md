@@ -25,8 +25,8 @@ Skills are persistent, reusable workflows that extend agent capabilities — thi
 
 | Repo | Description |
 |------|-------------|
-| **[superpowers](https://github.com/tokenaissance/superpowers)** | ⚡ Agentic Coding Skills — a skills framework & software development methodology |
 | **[clean-architecture-skill](https://github.com/tokenaissance/clean-architecture-skill)** | 🏗️ Agentic coding architecture skill — Clean Architecture + SOLID + Musk's 5-step algorithm |
+| **[superpowers](https://github.com/tokenaissance/superpowers)** | ⚡ Agentic Coding Skills — a skills framework & software development methodology |
 | **[planning-with-files](https://github.com/tokenaissance/planning-with-files)** | 📋 Manus-style persistent markdown planning — the workflow pattern behind the $2B acquisition |
 
 #### 🎨 Design & UI/UX
