@@ -29,6 +29,7 @@ Skills are persistent, reusable workflows that extend agent capabilities — thi
 | **[superpowers](https://github.com/tokenaissance/superpowers)** | ⚡ Agentic Coding Skills — a skills framework & software development methodology |
 | **[startup-founder-skills](https://github.com/tokenaissance/startup-founder-skills)** | 🚀 Startup Skills — fundraising, sales, product, recruiting, growth for founders |
 | **[gtm-engineer-skills](https://github.com/tokenaissance/gtm-engineer-skills)** | 📈 GTM Engineer Skills — go-to-market execution for technical founders |
+| **[Product-Manager-Skills](https://github.com/tokenaissance/Product-Manager-Skills)** | 📋 PM Skills — product management workflows for AI agents |
 | **[clean-architecture-skill](https://github.com/tokenaissance/clean-architecture-skill)** | 🏗️ Agentic coding architecture skill — Clean Architecture + SOLID + Musk's 5-step algorithm |
 | **[planning-with-files](https://github.com/tokenaissance/planning-with-files)** | 📋 Manus-style persistent markdown planning — the workflow pattern behind the $2B acquisition |
 | **[serenity-aleabitoreddit](https://github.com/tokenaissance/serenity-aleabitoreddit)** | 💰 Finance Skill — Serenity tweet archive + AI supply-chain analysis |
