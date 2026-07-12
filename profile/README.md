@@ -21,24 +21,56 @@ Welcome to **Tokenaissance** — we are building a Manus-like ecosystem for auto
 
 Skills are persistent, reusable workflows that extend agent capabilities — think of them as "apps for AI agents."
 
+#### ⚡ Agentic Coding
+
 | Repo | Description |
 |------|-------------|
-| **[agent-html-skills](https://github.com/tokenaissance/agent-html-skills)** | 🗣️ Bidirectional Agent/Human communication protocol skill |
-| **[mastering-technical-sales-skills](https://github.com/tokenaissance/mastering-technical-sales-skills)** | 📘 The Sales Engineer's Handbook — a complete SE playbook |
-| **[yichen-skills](https://github.com/tokenaissance/yichen-skills)** | 🔧 Curated skill collection by Yichen |
 | **[superpowers](https://github.com/tokenaissance/superpowers)** | ⚡ Agentic Coding Skills — a skills framework & software development methodology |
-| **[startup-founder-skills](https://github.com/tokenaissance/startup-founder-skills)** | 🚀 Startup Skills — fundraising, sales, product, recruiting, growth for founders |
-| **[gtm-engineer-skills](https://github.com/tokenaissance/gtm-engineer-skills)** | 📈 GTM Engineer Skills — go-to-market execution for technical founders |
-| **[impeccable](https://github.com/tokenaissance/impeccable)** | 🎨 UI/UX Skills — frontend design, color, animation, and polish for AI agents |
-| **[mcp_excalidraw](https://github.com/tokenaissance/mcp_excalidraw)** | 🏗️ SystemDesign Skill — Excalidraw MCP for architecture and system diagrams |
-| **[Product-Manager-Skills](https://github.com/tokenaissance/Product-Manager-Skills)** | 📋 PM Skills — product management workflows for AI agents |
 | **[clean-architecture-skill](https://github.com/tokenaissance/clean-architecture-skill)** | 🏗️ Agentic coding architecture skill — Clean Architecture + SOLID + Musk's 5-step algorithm |
 | **[planning-with-files](https://github.com/tokenaissance/planning-with-files)** | 📋 Manus-style persistent markdown planning — the workflow pattern behind the $2B acquisition |
-| **[serenity-aleabitoreddit](https://github.com/tokenaissance/serenity-aleabitoreddit)** | 💰 Finance Skill — Serenity tweet archive + AI supply-chain analysis |
+
+#### 🎨 Design & UI/UX
+
+| Repo | Description |
+|------|-------------|
+| **[impeccable](https://github.com/tokenaissance/impeccable)** | 🎨 UI/UX Skills — frontend design, color, animation, and polish for AI agents |
+| **[agent-html-skills](https://github.com/tokenaissance/agent-html-skills)** | 🗣️ Bidirectional Agent/Human communication protocol skill |
 | **[frontend-slides](https://github.com/tokenaissance/frontend-slides)** | 🎬 Presentation Skill — create beautiful web slides with Claude |
+
+#### 🚀 Business & GTM
+
+| Repo | Description |
+|------|-------------|
+| **[startup-founder-skills](https://github.com/tokenaissance/startup-founder-skills)** | 🚀 Startup Skills — fundraising, sales, product, recruiting, growth for founders |
+| **[gtm-engineer-skills](https://github.com/tokenaissance/gtm-engineer-skills)** | 📈 GTM Engineer Skills — go-to-market execution for technical founders |
+| **[Product-Manager-Skills](https://github.com/tokenaissance/Product-Manager-Skills)** | 📋 PM Skills — product management workflows for AI agents |
+| **[mastering-technical-sales-skills](https://github.com/tokenaissance/mastering-technical-sales-skills)** | 📘 The Sales Engineer's Handbook — a complete SE playbook |
+
+#### 💰 Finance & Crypto
+
+| Repo | Description |
+|------|-------------|
 | **[barker-stablecoin-skills](https://github.com/tokenaissance/barker-stablecoin-skills)** | 💰 DeFi Skill — stablecoin yield intelligence, real-time APY from 500+ protocols |
-| **[qiqing-liuyu](https://github.com/tokenaissance/qiqing-liuyu)** | 🌊 Soul Skills — 七情六欲 — emotional and spiritual intelligence for AI agents |
+| **[serenity-aleabitoreddit](https://github.com/tokenaissance/serenity-aleabitoreddit)** | 💰 Finance Skill — Serenity tweet archive + AI supply-chain analysis |
+
+#### 🏗️ System & Architecture
+
+| Repo | Description |
+|------|-------------|
+| **[mcp_excalidraw](https://github.com/tokenaissance/mcp_excalidraw)** | 🏗️ SystemDesign Skill — Excalidraw MCP for architecture and system diagrams |
+
+#### 🌊 Life & Spirit
+
+| Repo | Description |
+|------|-------------|
 | **[bazi-ziwei-skill](https://github.com/tokenaissance/bazi-ziwei-skill)** | 🔮 AI-powered BaZi (八字) + ZiWei (紫微斗数) astrology analysis |
+| **[qiqing-liuyu](https://github.com/tokenaissance/qiqing-liuyu)** | 🌊 Soul Skills — 七情六欲 — emotional and spiritual intelligence for AI agents |
+
+#### 📦 Collections
+
+| Repo | Description |
+|------|-------------|
+| **[yichen-skills](https://github.com/tokenaissance/yichen-skills)** | 🔧 Curated skill collection by Yichen |
 
 ### 📝 Template
 
