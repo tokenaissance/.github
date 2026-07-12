@@ -14,8 +14,7 @@ Welcome to **Tokenaissance** — we are building a Manus-like ecosystem for auto
 
 | Repo | Description |
 |------|-------------|
-| **[FastAgent](https://github.com/tokenaissance/fastagent)** 🚧 *Private* | Forked from FastClaw with cloud-native customizations — multi-tenant, auth, provisioning, and managed infrastructure. |
-| **[FastClaw](https://github.com/tokenaissance/fastclaw)** | ⚡ The lightning-fast open-source agent runtime — the upstream engine that powers FastAgent. |
+| **[FastAgent](https://github.com/tokenaissance/fastagent)** 🚧 *Private* | ⚡ The lightning-fast agent runtime — forked from FastClaw with cloud-native customizations: multi-tenant, auth, provisioning, and managed infrastructure. |
 | **[Tokenaissance Cloud](https://github.com/tokenaissance/tokenaissance-cloud)** 🚧 *Private* | ☁️ Everything about running agents seamlessly — Skills, Models, Sandbox, and more. |
 
 ### 🪄 Skills
