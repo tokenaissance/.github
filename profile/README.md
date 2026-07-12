@@ -57,8 +57,13 @@ Skills are persistent, reusable workflows that extend agent capabilities — thi
 
 | Repo | Description |
 |------|-------------|
-| **[OpenCLI](https://github.com/tokenaissance/OpenCLI)** | WebFetch Skill — make any website into CLI, use your logged-in browser by AI agent |
 | **[mcp_excalidraw](https://github.com/tokenaissance/mcp_excalidraw)** | SystemDesign Skill — Excalidraw MCP for architecture and system diagrams |
+
+#### Web Fetch
+
+| Repo | Description |
+|------|-------------|
+| **[OpenCLI](https://github.com/tokenaissance/OpenCLI)** | WebFetch Skill — make any website into CLI, use your logged-in browser by AI agent |
 
 #### Life & Spirit
 
