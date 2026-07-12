@@ -41,6 +41,12 @@ Start here to build your own skill:
 | **[hello-agents](https://github.com/tokenaissance/hello-agents)** | 📖 Agent Tutorial & Education — build intelligent agents from scratch |
 | **[knowledge-wiki-template](https://github.com/tokenaissance/knowledge-wiki-template)** | 📝 Skill Template — the canonical blueprint for all Tokenaissance skills |
 
+### 🧩 Plugins
+
+| Repo | Description |
+|------|-------------|
+| **[cc-switch](https://github.com/tokenaissance/cc-switch)** | 🔀 Claude Code Model Switch — cross-platform desktop assistant for multi-model switching |
+
 ### 📚 Knowledge & Infrastructure
 
 | Repo | Description |
