@@ -34,6 +34,7 @@ Skills are persistent, reusable workflows that extend agent capabilities — thi
 
 | Repo | Description |
 |------|-------------|
+| **[firecrawl](https://github.com/tokenaissance/firecrawl)** | 🔥 Web Fetch — search, scrape, and interact with the web at scale |
 | **[searxng-helm](https://github.com/tokenaissance/searxng-helm)** | 🔍 Agent Search — self-hosted privacy metasearch for agent web access |
 | **[contexto](https://github.com/tokenaissance/contexto)** | 🧠 Persistent memory engine for long-running AI agents |
 
