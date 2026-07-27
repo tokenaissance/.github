@@ -116,7 +116,7 @@ We believe in the open agentic future. Whether you're building a new Skill, impr
 Need help? Want to give feedback? We'd love to connect.
 
 <p align="center">
-  <a href="https://x.com/sakurain_ai"><img src="https://img.shields.io/badge/X-@sakurain__ai-black?style=for-the-badge&logo=x&logoColor=white" alt="X" /></a>
+  <a href="https://x.com/tokenaissance"><img src="https://img.shields.io/badge/X-@tokenaissance-black?style=for-the-badge&logo=x&logoColor=white" alt="X" /></a>
   <a href="https://discord.gg/bXntC3xhG2"><img src="https://img.shields.io/badge/Discord-Join%20Server-%23143D52?style=for-the-badge&logo=discord&logoColor=white" alt="Discord" /></a>
 </p>
 
