@@ -16,7 +16,7 @@
 
 | 仓库 | 描述 |
 |------|------|
-| **[FastAgent](https://github.com/tokenaissance/fastagent)** [私有] | 闪电般快速的智能体运行时，具备云原生定制：多租户、认证、自动配置和托管基础设施。 |
+| **[FastAgent](https://github.com/tokenaissance/fastagent)** | 闪电般快速的智能体运行时，具备云原生定制：多租户、认证、自动配置和托管基础设施。 |
 | **[Tokenaissance Cloud](https://github.com/tokenaissance/tokenaissance-cloud)** | 无缝运行智能体的一切 — 技能、模型、沙箱等等。 |
 
 ### 技能
