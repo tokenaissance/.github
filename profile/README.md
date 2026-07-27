@@ -61,6 +61,12 @@ Skills are persistent, reusable workflows that extend agent capabilities — thi
 |------|-------------|
 | **[mcp_excalidraw](https://github.com/tokenaissance/mcp_excalidraw)** | SystemDesign Skill — Excalidraw MCP for architecture and system diagrams |
 
+#### Social Media
+
+| Repo | Description |
+|------|-------------|
+| **[social-media-skills](https://github.com/AISA-skills/social-media-skills)** | Social Media Skills — content creation, scheduling, and analytics for AI agents |
+
 #### Web Fetch
 
 | Repo | Description |

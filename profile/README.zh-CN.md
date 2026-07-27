@@ -61,6 +61,12 @@
 |------|------|
 | **[mcp_excalidraw](https://github.com/tokenaissance/mcp_excalidraw)** | 系统设计技能 — Excalidraw MCP 用于架构和系统图 |
 
+#### 社交媒体
+
+| 仓库 | 描述 |
+|------|------|
+| **[social-media-skills](https://github.com/AISA-skills/social-media-skills)** | 社交媒体技能 — 为 AI 智能体提供内容创作、排程和分析能力 |
+
 #### 网页获取
 
 | 仓库 | 描述 |
