@@ -38,6 +38,7 @@ Skills are persistent, reusable workflows that extend agent capabilities — thi
 | **[impeccable](https://github.com/tokenaissance/impeccable)** | UI/UX Skills — frontend design, color, animation, and polish for AI agents |
 | **[agent-html-skills](https://github.com/tokenaissance/agent-html-skills)** | Bidirectional Agent/Human communication protocol skill |
 | **[frontend-slides](https://github.com/tokenaissance/frontend-slides)** | Presentation Skill — create beautiful web slides with Claude |
+| **[hallmark](https://github.com/tokenaissance/hallmark)** | Design Skill — anti-AI-slop UI design: greenfield pages, audits, redesigns, and design DNA extraction |
 
 #### Business & GTM
 

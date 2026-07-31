@@ -38,6 +38,7 @@
 | **[impeccable](https://github.com/tokenaissance/impeccable)** | UI/UX 技能 — 前端设计、色彩、动画与精雕细琢 |
 | **[agent-html-skills](https://github.com/tokenaissance/agent-html-skills)** | 双向智能体/人类通信协议技能 |
 | **[frontend-slides](https://github.com/tokenaissance/frontend-slides)** | 演示技能 — 使用 Claude 创建精美的网页幻灯片 |
+| **[hallmark](https://github.com/tokenaissance/hallmark)** | 设计技能 — 反 AI 味 UI 设计：新页面、审计、重设计与设计 DNA 提取 |
 
 #### 商业与市场
 
