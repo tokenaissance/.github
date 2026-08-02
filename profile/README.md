@@ -68,6 +68,12 @@ Skills are persistent, reusable workflows that extend agent capabilities — thi
 |------|-------------|
 | **[social-media-skills](https://github.com/AISA-skills/social-media-skills)** | Social Media Skills — content creation, scheduling, and analytics for AI agents |
 
+#### Research
+
+| Repo | Description |
+|------|-------------|
+| **[last30days-skill](https://github.com/tokenaissance/last30days-skill)** | Research Skill — researches any topic across Reddit, X, YouTube, HN, Polymarket, and the web, then synthesizes a grounded summary |
+
 #### Web Fetch
 
 | Repo | Description |

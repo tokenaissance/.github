@@ -68,6 +68,12 @@
 |------|------|
 | **[social-media-skills](https://github.com/AISA-skills/social-media-skills)** | 社交媒体技能 — 为 AI 智能体提供内容创作、排程和分析能力 |
 
+#### 研究
+
+| 仓库 | 描述 |
+|------|------|
+| **[last30days-skill](https://github.com/tokenaissance/last30days-skill)** | 研究技能 — 跨 Reddit、X、YouTube、HN、Polymarket 与网络调研任意主题，并综合出有依据的摘要 |
+
 #### 网页获取
 
 | 仓库 | 描述 |
