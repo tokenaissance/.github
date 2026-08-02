@@ -1,0 +1,76 @@
+name: Sync org forks
+
+on:
+  schedule:
+    # daily 04:23 UTC — off the :00/:30 marks to avoid API peak
+    - cron: '23 4 * * *'
+  workflow_dispatch: {}
+
+permissions:
+  contents: read
+
+jobs:
+  sync-all-forks:
+    runs-on: ubuntu-latest
+    steps:
+      # Fails loudly if the PAT is invalid/expired (otherwise the loop below
+      # would silently "fail" every repo and still exit green).
+      - name: Verify sync token
+        env:
+          GH_TOKEN: ${{ secrets.ORG_SYNC_PAT }}
+        run: |
+          who=$(gh api user --jq '.login')
+          echo "Sync token belongs to: $who"
+
+      - name: Discover fork repos
+        id: list
+        env:
+          GH_TOKEN: ${{ secrets.ORG_SYNC_PAT }}
+        run: |
+          gh api 'orgs/tokenaissance/repos?per_page=100&type=forks' --paginate \
+            --jq '.[] | select(.fork == true) | .name' | sort > forks.txt
+          total=$(wc -l < forks.txt | tr -d ' ')
+          echo "total=$total" >> "$GITHUB_OUTPUT"
+          echo "Discovered $total forks"
+
+      # Safe-mode sync: fast-forward only. Forks that have diverged from
+      # upstream (org-only commits) or are unreachable are reported as
+      # warnings and skipped — they never block the next repo.
+      - name: Sync each fork
+        id: sync
+        env:
+          GH_TOKEN: ${{ secrets.ORG_SYNC_PAT }}
+        run: |
+          set +e
+          ok=0
+          failed=0
+          while IFS= read -r repo || [ -n "$repo" ]; do
+            [ -z "$repo" ] && continue
+            echo "::group::Sync tokenaissance/$repo"
+            if output=$(gh repo sync "tokenaissance/$repo" 2>&1); then
+              echo "OK   $repo"
+              ok=$((ok + 1))
+            else
+              last=$(printf '%s\n' "$output" | tail -1)
+              echo "::warning::Sync failed for $repo — $last"
+              failed=$((failed + 1))
+            fi
+            echo "::endgroup::"
+          done < forks.txt
+          echo "ok=$ok" >> "$GITHUB_OUTPUT"
+          echo "failed=$failed" >> "$GITHUB_OUTPUT"
+          echo "Result: $ok synced, $failed failed/skipped (of ${{ steps.list.outputs.total }})"
+          exit 0
+
+      - name: Post summary
+        if: always()
+        run: |
+          {
+            echo "## Fork sync result"
+            echo ""
+            echo "- Total forks: ${{ steps.list.outputs.total }}"
+            echo "- Synced: ${{ steps.sync.outputs.ok }}"
+            echo "- Failed/skipped: ${{ steps.sync.outputs.failed }}"
+            echo ""
+            echo "_Safe mode: fast-forward only, diverged forks are skipped._"
+          } >> "$GITHUB_STEP_SUMMARY"
