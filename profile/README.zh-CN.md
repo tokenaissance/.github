@@ -49,6 +49,19 @@
 | **[Product-Manager-Skills](https://github.com/tokenaissance/Product-Manager-Skills)** | 产品经理技能 — 面向 AI 智能体的产品管理工作流 |
 | **[mastering-technical-sales-skills](https://github.com/tokenaissance/mastering-technical-sales-skills)** | 销售工程师手册 — 完整的 SE 实战指南 |
 
+##### GTM · SEO · GEO — 社区精选 Fork
+
+社区精选的 GTM / SEO / GEO 技能，直接从原作者仓库 fork。所有功劳归于上游创作者。
+
+| 仓库 | 原作者 | 描述 |
+|------|--------|------|
+| **[opc-skills](https://github.com/tokenaissance/opc-skills)** | [ReScienceLab](https://github.com/ReScienceLab) | 源自 [opc-skills](https://github.com/ReScienceLab/opc-skills) — seo-geo 技能，39.7K 安装量 |
+| **[seo-geo-claude-skills](https://github.com/tokenaissance/seo-geo-claude-skills)** | [aaron-he-zhu](https://github.com/aaron-he-zhu) | 源自 [seo-geo-claude-skills](https://github.com/aaron-he-zhu/seo-geo-claude-skills) — 20 个独立 SEO/GEO 技能 |
+| **[marketing-skills](https://github.com/tokenaissance/marketing-skills)** | [kostja94](https://github.com/kostja94) | 源自 [marketing-skills](https://github.com/kostja94/marketing-skills) — 160+ 营销技能（GTM + SEO + GEO） |
+| **[pm-skills](https://github.com/tokenaissance/pm-skills)** | [phuryn](https://github.com/phuryn) | 源自 [pm-skills](https://github.com/phuryn/pm-skills) — 100+ PM 技能，含 gtm-strategy（上游 24.9K★） |
+| **[agent-toolkit](https://github.com/tokenaissance/agent-toolkit)** | [sanity-io](https://github.com/sanity-io) | 源自 [agent-toolkit](https://github.com/sanity-io/agent-toolkit) — seo-aeo-best-practices |
+| **[founder-skills](https://github.com/tokenaissance/founder-skills)** | [ognjengt](https://github.com/ognjengt) | 源自 [founder-skills](https://github.com/ognjengt/founder-skills) — 创始人市场进入计划 |
+
 #### 金融与加密
 
 | 仓库 | 描述 |

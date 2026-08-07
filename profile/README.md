@@ -49,6 +49,19 @@ Skills are persistent, reusable workflows that extend agent capabilities — thi
 | **[Product-Manager-Skills](https://github.com/tokenaissance/Product-Manager-Skills)** | PM Skills — product management workflows for AI agents |
 | **[mastering-technical-sales-skills](https://github.com/tokenaissance/mastering-technical-sales-skills)** | The Sales Engineer's Handbook — a complete SE playbook |
 
+##### GTM · SEO · GEO — Community Forks
+
+Community-curated GTM / SEO / GEO skills, forked from their original authors. All credit goes to the upstream creators.
+
+| Repo | Original Author | Description |
+|------|-----------------|-------------|
+| **[opc-skills](https://github.com/tokenaissance/opc-skills)** | [ReScienceLab](https://github.com/ReScienceLab) | Fork of [opc-skills](https://github.com/ReScienceLab/opc-skills) — seo-geo skill, 39.7K installs |
+| **[seo-geo-claude-skills](https://github.com/tokenaissance/seo-geo-claude-skills)** | [aaron-he-zhu](https://github.com/aaron-he-zhu) | Fork of [seo-geo-claude-skills](https://github.com/aaron-he-zhu/seo-geo-claude-skills) — 20 standalone SEO/GEO skills |
+| **[marketing-skills](https://github.com/tokenaissance/marketing-skills)** | [kostja94](https://github.com/kostja94) | Fork of [marketing-skills](https://github.com/kostja94/marketing-skills) — 160+ marketing skills (GTM + SEO + GEO) |
+| **[pm-skills](https://github.com/tokenaissance/pm-skills)** | [phuryn](https://github.com/phuryn) | Fork of [pm-skills](https://github.com/phuryn/pm-skills) — 100+ PM skills incl. gtm-strategy (24.9K★ upstream) |
+| **[agent-toolkit](https://github.com/tokenaissance/agent-toolkit)** | [sanity-io](https://github.com/sanity-io) | Fork of [agent-toolkit](https://github.com/sanity-io/agent-toolkit) — seo-aeo-best-practices |
+| **[founder-skills](https://github.com/tokenaissance/founder-skills)** | [ognjengt](https://github.com/ognjengt) | Fork of [founder-skills](https://github.com/ognjengt/founder-skills) — go-to-market-plan for founders |
+
 #### Finance & Crypto
 
 | Repo | Description |
