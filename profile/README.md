@@ -2,144 +2,208 @@
 
 <div align="center">
   <h1>Tokenaissance</h1>
-  <p><b>The Agent Ecosystem — Runtime, Skills, Models, Sandbox, Community</b></p>
-  <a href="https://tokenaissance.com">tokenaissance.com</a>
-  <br/>
-  <br/>
+  <p><b>Agent runtime and agent infrastructure.</b></p>
+  <p>
+    A runtime that keeps working after the tab closes.<br/>
+    A filesystem agents share, branch and merge.<br/>
+    Plugins for the harness you already run.
+  </p>
+  <p>
+    <a href="https://tokenaissance.com"><b>tokenaissance.com</b></a> ·
+    <a href="#start">Start here</a> ·
+    <a href="#plugins">dsh plugins</a>
+  </p>
 </div>
 
-Welcome to **Tokenaissance** — we are building a Manus-like ecosystem for autonomous AI agents. Our platform lets developers build, run, and share complex Agent workflows (Skills) and connect them with real-world capabilities (Tools).
+We build and run the layers under an agent that has stopped being a demo: where it runs,
+where its work survives, and the rule the code is written by. Five projects carry that
+work today — two runtimes, one substrate, a plugin layer and a method. Each one exists
+because something breaks once an agent runs longer than one conversation.
 
-## Ecosystem
+## The stack
 
-### Core Engine
+| Layer | Project | What it does |
+| --- | --- | --- |
+| **Runtime** | **[FastAgent](https://github.com/tokenaissance/fastagent)** | A single Go binary: the loop, the tools, the sandboxes and the channels, on your own machines. |
+| **Runtime** | **tokenaissance-pi-durable** | The same job on Cloudflare Workers and Durable Objects. Private, in development. |
+| **Substrate** | **[LayerFS](https://github.com/Ephemeral-AI-Lab/layerfs)** | Ephemeral Workspaces over durable shared history; every step an agent takes is a Commit. |
+| **Plugins** | **[dsh-excalidraw](https://github.com/tokenaissance/dsh-excalidraw)** | Live Excalidraw diagrams inside DeepSeek Harness, shipped as a bundle and not a fork. |
+| **Method** | **[clean-architecture](https://github.com/tokenaissance/clean-architecture)** | Four layers, one dependency direction, and a gate that deletes over-engineering. |
 
-| Repo | Description |
-|------|-------------|
-| **[FastAgent](https://github.com/tokenaissance/fastagent)** | The lightning-fast agent runtime with cloud-native customizations: multi-tenant, auth, provisioning, and managed infrastructure. |
-| **[Tokenaissance Cloud](https://github.com/tokenaissance/tokenaissance-cloud)** | Everything about running agents seamlessly — Skills, Models, Sandbox, and more. |
+## Runtimes
 
-### Skills
+### FastAgent
 
-Skills are persistent, reusable workflows that extend agent capabilities — think of them as "apps for AI agents."
+**A single Go binary that turns a model into an agent you host yourself.** The agent
+loop, the tools, the sandboxes, the channels and the admin dashboard run in one process;
+SQLite is the default store.
 
-#### Agentic Coding
+- **Any model.** OpenAI, Anthropic, DeepSeek, Mistral, Groq, Ollama, OpenRouter or any
+  OpenAI-compatible endpoint, with a per-agent override of the system default.
+- **Sandboxes that keep their work.** E2B or Docker; skills and workspace are hydrated
+  before a tool call, and the sandbox's files are mirrored back to the store after it.
+- **Channels, not a chat box.** Per-agent Telegram, Discord and Slack bots, with
+  sessions isolated per channel and per chat.
+- **An API an application can call.** OpenAI-compatible `/v1/chat/completions` with
+  streaming, an SSE chat endpoint, MCP servers, a JSON-RPC plugin system, and per-user
+  quotas.
 
-| Repo | Description |
-|------|-------------|
-| **[clean-architecture-skill](https://github.com/tokenaissance/clean-architecture-skill)** | Agentic coding architecture skill — Clean Architecture + SOLID + Musk's 5-step algorithm |
-| **[superpowers](https://github.com/tokenaissance/superpowers)** | Agentic Coding Skills — a skills framework & software development methodology |
-| **[planning-with-files](https://github.com/tokenaissance/planning-with-files)** | Manus-style persistent markdown planning — the workflow pattern behind the $2B acquisition |
+```bash
+curl -fsSL https://raw.githubusercontent.com/tokenaissance/fastagent/fastagent/install.sh | bash
+```
 
-#### Design & UI/UX
+**[github.com/tokenaissance/fastagent](https://github.com/tokenaissance/fastagent)**
 
-| Repo | Description |
-|------|-------------|
-| **[impeccable](https://github.com/tokenaissance/impeccable)** | UI/UX Skills — frontend design, color, animation, and polish for AI agents |
-| **[agent-html-skills](https://github.com/tokenaissance/agent-html-skills)** | Bidirectional Agent/Human communication protocol skill |
-| **[frontend-slides](https://github.com/tokenaissance/frontend-slides)** | Presentation Skill — create beautiful web slides with Claude |
-| **[hallmark](https://github.com/tokenaissance/hallmark)** | Design Skill — anti-AI-slop UI design: greenfield pages, audits, redesigns, and design DNA extraction |
+### tokenaissance-pi-durable
 
-#### Business & GTM
+**The same job at the edge, on Cloudflare Workers and Durable Objects.** One Worker
+hosts the product, the agent session and the sandbox: an `AgentSession` object runs the
+Pi harness and keeps the transcript in its own SQLite, while a `Sandbox` object owns one
+container per session.
 
-| Repo | Description |
-|------|-------------|
-| **[startup-founder-skills](https://github.com/tokenaissance/startup-founder-skills)** | Startup Skills — fundraising, sales, product, recruiting, growth for founders |
-| **[gtm-engineer-skills](https://github.com/tokenaissance/gtm-engineer-skills)** | GTM Engineer Skills — go-to-market execution for technical founders |
-| **[Product-Manager-Skills](https://github.com/tokenaissance/Product-Manager-Skills)** | PM Skills — product management workflows for AI agents |
-| **[mastering-technical-sales-skills](https://github.com/tokenaissance/mastering-technical-sales-skills)** | The Sales Engineer's Handbook — a complete SE playbook |
+- **Durable by construction.** Work waits on alarms, not on a request; an evicted object
+  wakes up and resumes the task it was in the middle of.
+- **Reconnect is a design case.** An SSE adapter turns the session's event stream into
+  `text/event-stream`, with reconnect and backpressure handled at that one boundary.
+- **One deploy.** The TanStack Start app, the durable objects and the container image
+  ship from the same Worker.
 
-##### GTM · SEO · GEO — Community Forks
+Private while it stabilizes — ask in [Discord](https://discord.gg/bXntC3xhG2) or on
+WeChat below.
 
-Community-curated GTM / SEO / GEO skills, forked from their original authors. All credit goes to the upstream creators.
+## Substrate
 
-| Repo | Original Author | Description |
-|------|-----------------|-------------|
-| **[opc-skills](https://github.com/tokenaissance/opc-skills)** | [ReScienceLab](https://github.com/ReScienceLab) | Fork of [opc-skills](https://github.com/ReScienceLab/opc-skills) — seo-geo skill, 39.7K installs |
-| **[seo-geo-claude-skills](https://github.com/tokenaissance/seo-geo-claude-skills)** | [aaron-he-zhu](https://github.com/aaron-he-zhu) | Fork of [seo-geo-claude-skills](https://github.com/aaron-he-zhu/seo-geo-claude-skills) — 20 standalone SEO/GEO skills |
-| **[marketing-skills](https://github.com/tokenaissance/marketing-skills)** | [kostja94](https://github.com/kostja94) | Fork of [marketing-skills](https://github.com/kostja94/marketing-skills) — 160+ marketing skills (GTM + SEO + GEO) |
-| **[pm-skills](https://github.com/tokenaissance/pm-skills)** | [phuryn](https://github.com/phuryn) | Fork of [pm-skills](https://github.com/phuryn/pm-skills) — 100+ PM skills incl. gtm-strategy (24.9K★ upstream) |
-| **[agent-toolkit](https://github.com/tokenaissance/agent-toolkit)** | [sanity-io](https://github.com/sanity-io) | Fork of [agent-toolkit](https://github.com/sanity-io/agent-toolkit) — seo-aeo-best-practices |
-| **[founder-skills](https://github.com/tokenaissance/founder-skills)** | [ognjengt](https://github.com/ognjengt) | Fork of [founder-skills](https://github.com/ognjengt/founder-skills) — go-to-market-plan for founders |
+### LayerFS
 
-#### Finance & Crypto
+**Ephemeral Workspaces over durable shared history.** Every agent mounts a complete,
+writable Workspace over a shared Store without copying the base. It does its work,
+commits what changed, and goes away; the history stays.
 
-| Repo | Description |
-|------|-------------|
-| **[barker-stablecoin-skills](https://github.com/tokenaissance/barker-stablecoin-skills)** | DeFi Skill — stablecoin yield intelligence, real-time APY from 500+ protocols |
-| **[serenity-aleabitoreddit](https://github.com/tokenaissance/serenity-aleabitoreddit)** | Finance Skill — Serenity tweet archive + AI supply-chain analysis |
+- **Every step is a commit.** An `fs` call lands as a Commit directly; a Bash call is
+  mount → run → commit → unmount, and everything the command changed is in that Commit.
+- **Parallel agents by default.** Branch from any Commit, merge when the branch is done,
+  and name the files that must never conflict in `/.lww`.
+- **Cheap enough to do constantly.** Snapshots share storage: the upstream benchmark
+  keeps 157 snapshots of a real project in 100 MB, 19.9× smaller than Btrfs + zstd.
 
-#### System & Architecture
+Open source by [Ephemeral AI Lab](https://github.com/Ephemeral-AI-Lab/layerfs); we run it
+under dsh, send fixes upstream, and mirror it
+[here](https://github.com/tokenaissance/layerfs).
+**[layerfs.ai](https://layerfs.ai)** · **[Docs](https://layerfs.ai/docs/)**
 
-| Repo | Description |
-|------|-------------|
-| **[mcp_excalidraw](https://github.com/tokenaissance/mcp_excalidraw)** | SystemDesign Skill — Excalidraw MCP for architecture and system diagrams |
+<a id="plugins"></a>
+## Plugins
 
-#### Social Media
+The host is [DeepSeek Harness](https://github.com/deepseek-ai/deepseek-harness) (dsh),
+DeepSeek AI's open-source harness. Its model adapter, tool registry, session log and
+agent loop are all plugins, so capability is added by mounting a bundle beside them —
+never by forking the harness. That is where our plugin work goes.
 
-| Repo | Description |
-|------|-------------|
-| **[social-media-skills](https://github.com/AISA-skills/social-media-skills)** | Social Media Skills — content creation, scheduling, and analytics for AI agents |
+### dsh-excalidraw
 
-#### Research
+**Live Excalidraw architecture inside the harness.** Ask the agent to draw or refresh the
+diagram; the scene is pulled through the Excalidraw+ MCP server, stored in the workspace
+as a real `.excalidraw` file, and a viewer re-renders it in place — no screenshot, no
+page refresh.
 
-| Repo | Description |
-|------|-------------|
-| **[last30days-skill](https://github.com/tokenaissance/last30days-skill)** | Research Skill — researches any topic across Reddit, X, YouTube, HN, Polymarket, and the web, then synthesizes a grounded summary |
+- Three model tools — `excalidraw_refresh`, `excalidraw_open`, `excalidraw_export` —
+  over the same scene store the view reads.
+- One bundle, two surfaces: dsh's own view beside Chat and Trajectory, and, when
+  dsh-better-sidebar is installed, its tab, file viewer and file icon.
+- A deterministic Excalidraw→SVG renderer with no `@excalidraw` runtime dependency; a
+  revision poll re-renders in place. 212 zero-dependency tests.
 
-#### Web Fetch
+0.1 is a read-only viewer — pan, zoom, select — and editing stays in Excalidraw.
 
-| Repo | Description |
-|------|-------------|
-| **[OpenCLI](https://github.com/tokenaissance/OpenCLI)** | WebFetch Skill — make any website into CLI, use your logged-in browser by AI agent |
+**[github.com/tokenaissance/dsh-excalidraw](https://github.com/tokenaissance/dsh-excalidraw)** ·
+**[Install](https://github.com/tokenaissance/dsh-excalidraw#install)**
 
-#### Life & Spirit
+```sh
+dsh plugin --profile desktop add <path-to-checkout>
+```
 
-| Repo | Description |
-|------|-------------|
-| **[bazi-ziwei-skill](https://github.com/tokenaissance/bazi-ziwei-skill)** | AI-powered BaZi (八字) + ZiWei (紫微斗数) astrology analysis |
-| **[qiqing-liuyu](https://github.com/tokenaissance/qiqing-liuyu)** | Soul Skills — 七情六欲 — emotional and spiritual intelligence for AI agents |
+Published under the **[`dsh-plugin` topic](https://github.com/topics/dsh-plugin)** — how
+dsh users find plugins.
 
-#### Collections
+## Method
 
-| Repo | Description |
-|------|-------------|
-| **[yichen-skills](https://github.com/tokenaissance/yichen-skills)** | Curated skill collection by Yichen |
+### clean-architecture
 
-### Template
+**A decision method, not a scaffold: diagnose first, then layer.** Four layers, one
+dependency direction, and Musk's five-step algorithm to delete over-engineering before
+it ships.
 
-Start here to build your own skill:
+- **Stack-agnostic.** The same four-layer model, mapped onto Express, Next.js, Go or
+  Spring instead of a copied template.
+- **An anti-over-engineering gate.** Advice to adopt the complex solution runs
+  question → delete → simplify → accelerate → automate first.
+- **Decisions that survive.** Architecture choices come with L2/L3 documentation
+  skeletons, so a dependency-rule violation is visible at the file header, not buried in
+  imports.
 
-| Repo | Description |
-|------|-------------|
-| **[hello-agents](https://github.com/tokenaissance/hello-agents)** | Agent Tutorial & Education — build intelligent agents from scratch |
-| **[knowledge-wiki-template](https://github.com/tokenaissance/knowledge-wiki-template)** | Skill Template — the canonical blueprint for all Tokenaissance skills |
+It is the default review skill in our own repositories.
+**[github.com/tokenaissance/clean-architecture](https://github.com/tokenaissance/clean-architecture)**
 
-### Plugins
+## Skills
 
-| Repo | Description |
-|------|-------------|
-| **[cc-switch](https://github.com/tokenaissance/cc-switch)** | Claude Code Model Switch — cross-platform desktop assistant for multi-model switching |
+The rest of what we install into agents. Most are maintained upstream by their authors;
+the repository here is a fork kept in sync, and the credit stays with the source.
 
-### Knowledge & Infrastructure
+- **Agentic coding** — [superpowers](https://github.com/tokenaissance/superpowers),
+  [planning-with-files](https://github.com/tokenaissance/planning-with-files),
+  [i-have-adhd](https://github.com/tokenaissance/i-have-adhd),
+  [asd-ste100-skill](https://github.com/tokenaissance/asd-ste100-skill)
+- **Design and frontend** — [impeccable](https://github.com/tokenaissance/impeccable),
+  [hallmark](https://github.com/tokenaissance/hallmark),
+  [agent-html-skills](https://github.com/tokenaissance/agent-html-skills),
+  [frontend-slides](https://github.com/tokenaissance/frontend-slides)
+- **Business, GTM and sales** — [startup-founder-skills](https://github.com/tokenaissance/startup-founder-skills),
+  [gtm-engineer-skills](https://github.com/tokenaissance/gtm-engineer-skills),
+  [Product-Manager-Skills](https://github.com/tokenaissance/Product-Manager-Skills),
+  [pm-skills](https://github.com/tokenaissance/pm-skills),
+  [mastering-technical-sales](https://github.com/tokenaissance/mastering-technical-sales)
+- **Research and the web** — [last30days-skill](https://github.com/tokenaissance/last30days-skill),
+  [ai-signal](https://github.com/tokenaissance/ai-signal),
+  [OpenCLI](https://github.com/tokenaissance/OpenCLI),
+  [firecrawl](https://github.com/tokenaissance/firecrawl),
+  [searxng-helm](https://github.com/tokenaissance/searxng-helm)
+- **Domain** — [barker-stablecoin-skills](https://github.com/tokenaissance/barker-stablecoin-skills) (DeFi),
+  [serenity-aleabitoreddit](https://github.com/tokenaissance/serenity-aleabitoreddit) (supply chain),
+  [mcp_excalidraw](https://github.com/tokenaissance/mcp_excalidraw) (system design),
+  [qiqing-liuyu](https://github.com/tokenaissance/qiqing-liuyu)
+- **Collections and templates** — [yichen-skills](https://github.com/tokenaissance/yichen-skills),
+  [hello-agents](https://github.com/tokenaissance/hello-agents),
+  [knowledge-wiki-template](https://github.com/tokenaissance/knowledge-wiki-template)
 
-| Repo | Description |
-|------|-------------|
-| **[firecrawl](https://github.com/tokenaissance/firecrawl)** | Web Fetch — search, scrape, and interact with the web at scale |
-| **[searxng-helm](https://github.com/tokenaissance/searxng-helm)** | Agent Search — self-hosted privacy metasearch for agent web access |
-| **[contexto](https://github.com/tokenaissance/contexto)** | Persistent memory engine for long-running AI agents |
+**Community forks, credited to their authors:**
 
-## Get Started
+| Skill | Author | What it adds |
+| --- | --- | --- |
+| [opc-skills](https://github.com/tokenaissance/opc-skills) | [ReScienceLab](https://github.com/ReScienceLab) | SEO / GEO skills, 39.7K installs upstream |
+| [seo-geo-claude-skills](https://github.com/tokenaissance/seo-geo-claude-skills) | [aaron-he-zhu](https://github.com/aaron-he-zhu) | 20 standalone SEO / GEO skills |
+| [marketing-skills](https://github.com/tokenaissance/marketing-skills) | [kostja94](https://github.com/kostja94) | 160+ marketing skills |
+| [pm-skills](https://github.com/tokenaissance/pm-skills) | [phuryn](https://github.com/phuryn) | 100+ PM skills, including gtm-strategy |
+| [agent-toolkit](https://github.com/tokenaissance/agent-toolkit) | [sanity-io](https://github.com/sanity-io) | SEO / AEO best practices |
+| [founder-skills](https://github.com/tokenaissance/founder-skills) | [ognjengt](https://github.com/ognjengt) | Go-to-market plans for founders |
 
-Visit **[tokenaissance.com](https://tokenaissance.com)** to try the platform. Want to build a skill? Clone any skill repo above, read its `SKILL.md`, and follow the pattern.
+<a id="start"></a>
+## Start here
 
-## Contribute
+1. **Run an agent.** Install FastAgent, open `http://localhost:18953`, add a model.
+   ```bash
+   curl -fsSL https://raw.githubusercontent.com/tokenaissance/fastagent/fastagent/install.sh | bash
+   fastagent
+   ```
+2. **Put a filesystem under it.** [LayerFS × DSH](https://github.com/tokenaissance/dsh-layerfs#-install)
+   — Ephemeral AI Lab's plugin — gives agents Branches, Workspaces and a shared history.
+3. **Add a capability instead of a fork.** Read the [`dsh-plugin` topic](https://github.com/topics/dsh-plugin),
+   or start from any `SKILL.md` above.
+4. **Use the hosted product.** [tokenaissance.com](https://tokenaissance.com) is where the
+   same team ships agents for finance and science.
 
-We believe in the open agentic future. Whether you're building a new Skill, improving the FastClaw runtime, or sharing knowledge — pull requests are welcome.
+## Community
 
-## Where to Find Us
-
-Need help? Want to give feedback? We'd love to connect.
+Need help, or want to build with us? We would like to hear from you.
 
 <p align="center">
   <a href="https://x.com/tokenaissance"><img src="https://img.shields.io/badge/X-@tokenaissance-black?style=for-the-badge&logo=x&logoColor=white" alt="X" /></a>
@@ -150,6 +214,8 @@ Need help? Want to give feedback? We'd love to connect.
   <b>Personal WeChat</b><br/>
   <img src="assets/wechat-qr.jpg" width="160" alt="WeChat QR" />
 </p>
+
+Issues and pull requests are welcome on any repository above.
 
 ---
 <div align="center">

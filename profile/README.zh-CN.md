@@ -2,144 +2,197 @@
 
 <div align="center">
   <h1>Tokenaissance</h1>
-  <p><b>智能体生态 — 运行时、技能、模型、沙箱、社区</b></p>
-  <a href="https://tokenaissance.com">tokenaissance.com</a>
-  <br/>
-  <br/>
+  <p><b>智能体运行时与智能体基础设施</b></p>
+  <p>
+    关掉标签页，它还在继续干活的运行时。<br/>
+    多个智能体共享、分支、合并的文件系统。<br/>
+    装进你手上 harness 的插件。
+  </p>
+  <p>
+    <a href="https://tokenaissance.com"><b>tokenaissance.com</b></a> ·
+    <a href="#start-zh">从这里开始</a> ·
+    <a href="#plugins-zh">dsh 插件</a>
+  </p>
 </div>
 
-欢迎来到 **Tokenaissance** — 我们正在构建一个类 Manus 的自主 AI 智能体生态系统。我们的平台让开发者能够构建、运行和分享复杂的智能体工作流（技能），并连接现实世界的能力（工具）。
+我们做的是智能体不再是演示之后、它下面那几层：在哪儿跑、干完的活留在哪儿、代码按什么
+规矩分层。今天扛起这件事的是五个项目 —— 两个运行时、一个底座、一层插件、一套方法。
+每一个都存在，因为智能体一旦跑得比一次对话更久，总有东西会坏。
 
-## 生态系统
+## 技术栈
 
-### 核心引擎
+| 层 | 项目 | 做什么 |
+| --- | --- | --- |
+| **运行时** | **[FastAgent](https://github.com/tokenaissance/fastagent)** | 一个 Go 单二进制：循环、工具、沙箱、渠道，跑在你自己的机器上。 |
+| **运行时** | **tokenaissance-pi-durable** | 同一件事放到 Cloudflare Workers + Durable Objects 上。私有，开发中。 |
+| **底座** | **[LayerFS](https://github.com/Ephemeral-AI-Lab/layerfs)** | 临时 Workspace 架在持久共享历史之上；智能体的每一步都是一个 Commit。 |
+| **插件** | **[dsh-excalidraw](https://github.com/tokenaissance/dsh-excalidraw)** | 把实时 Excalidraw 图放进 DeepSeek Harness，以 bundle 形式交付，不 fork 宿主。 |
+| **方法** | **[clean-architecture](https://github.com/tokenaissance/clean-architecture)** | 四层分层、一个依赖方向，再加一道删掉过度设计的闸门。 |
 
-| 仓库 | 描述 |
-|------|------|
-| **[FastAgent](https://github.com/tokenaissance/fastagent)** | 闪电般快速的智能体运行时，具备云原生定制：多租户、认证、自动配置和托管基础设施。 |
-| **[Tokenaissance Cloud](https://github.com/tokenaissance/tokenaissance-cloud)** | 无缝运行智能体的一切 — 技能、模型、沙箱等等。 |
+## 运行时
 
-### 技能
+### FastAgent
 
-技能是持久化、可复用的工作流，用于扩展智能体的能力 — 就像"智能体的应用"。
+**一个 Go 单二进制，把模型变成你自己托管的智能体。** 智能体循环、工具、沙箱、渠道和
+管理后台都跑在一个进程里；默认存储是 SQLite。
 
-#### 智能体编程
+- **任何模型。** OpenAI、Anthropic、DeepSeek、Mistral、Groq、Ollama、OpenRouter，或任何
+  OpenAI 兼容端点；单个智能体可以覆盖系统默认。
+- **会留下东西的沙箱。** E2B 或 Docker；工具调用前自动灌入技能和工作区，调用后把沙箱里
+  的文件镜像回持久存储。
+- **是渠道，不只是聊天框。** 每个智能体可以绑定 Telegram、Discord、Slack，会话按渠道和
+  会话 id 隔离。
+- **应用能直接调的 API。** OpenAI 兼容的流式 `/v1/chat/completions`、SSE 聊天端点、MCP
+  服务端、JSON-RPC 插件系统，以及按用户计的配额。
 
-| 仓库 | 描述 |
-|------|------|
-| **[clean-architecture-skill](https://github.com/tokenaissance/clean-architecture-skill)** | 智能体编程架构技能 — 整洁架构 + SOLID 原则 + 马斯克五步工作法 |
-| **[superpowers](https://github.com/tokenaissance/superpowers)** | 智能体编程技能 — 技能框架与软件开发方法论 |
-| **[planning-with-files](https://github.com/tokenaissance/planning-with-files)** | Manus 风格持久化 Markdown 规划 — 价值 20 亿美元收购背后的工作流模式 |
+```bash
+curl -fsSL https://raw.githubusercontent.com/tokenaissance/fastagent/fastagent/install.sh | bash
+```
 
-#### 设计与 UI/UX
+**[github.com/tokenaissance/fastagent](https://github.com/tokenaissance/fastagent)**
 
-| 仓库 | 描述 |
-|------|------|
-| **[impeccable](https://github.com/tokenaissance/impeccable)** | UI/UX 技能 — 前端设计、色彩、动画与精雕细琢 |
-| **[agent-html-skills](https://github.com/tokenaissance/agent-html-skills)** | 双向智能体/人类通信协议技能 |
-| **[frontend-slides](https://github.com/tokenaissance/frontend-slides)** | 演示技能 — 使用 Claude 创建精美的网页幻灯片 |
-| **[hallmark](https://github.com/tokenaissance/hallmark)** | 设计技能 — 反 AI 味 UI 设计：新页面、审计、重设计与设计 DNA 提取 |
+### tokenaissance-pi-durable
 
-#### 商业与市场
+**同一件事放到边缘：Cloudflare Workers + Durable Objects。** 一个 Worker 同时托管产品、
+智能体会话和沙箱：`AgentSession` 对象跑 Pi harness，转写存在它自己的 SQLite 里；
+`Sandbox` 对象则一个会话拥有一个容器。
 
-| 仓库 | 描述 |
-|------|------|
-| **[startup-founder-skills](https://github.com/tokenaissance/startup-founder-skills)** | 创业技能 — 融资、销售、产品、招聘、增长，为创始人打造 |
-| **[gtm-engineer-skills](https://github.com/tokenaissance/gtm-engineer-skills)** | GTM 工程技能 — 技术创始人的市场进入执行方案 |
-| **[Product-Manager-Skills](https://github.com/tokenaissance/Product-Manager-Skills)** | 产品经理技能 — 面向 AI 智能体的产品管理工作流 |
-| **[mastering-technical-sales-skills](https://github.com/tokenaissance/mastering-technical-sales-skills)** | 销售工程师手册 — 完整的 SE 实战指南 |
+- **因为构造而持久。** 活等的是 alarm，不是某个请求；对象被驱逐后会自己醒来，接着做它
+  刚才在做的那件事。
+- **重连是设计内的事。** SSE 适配层把会话的事件流变成 `text/event-stream`，重连与背压都
+  只在这一个边界上处理。
+- **一次部署。** TanStack Start 应用、Durable Objects 和容器镜像从同一个 Worker 发出去。
 
-##### GTM · SEO · GEO — 社区精选 Fork
+稳定之前保持私有 —— 到 [Discord](https://discord.gg/bXntC3xhG2) 或下方的微信找我们。
 
-社区精选的 GTM / SEO / GEO 技能，直接从原作者仓库 fork。所有功劳归于上游创作者。
+## 底座
 
-| 仓库 | 原作者 | 描述 |
-|------|--------|------|
-| **[opc-skills](https://github.com/tokenaissance/opc-skills)** | [ReScienceLab](https://github.com/ReScienceLab) | 源自 [opc-skills](https://github.com/ReScienceLab/opc-skills) — seo-geo 技能，39.7K 安装量 |
-| **[seo-geo-claude-skills](https://github.com/tokenaissance/seo-geo-claude-skills)** | [aaron-he-zhu](https://github.com/aaron-he-zhu) | 源自 [seo-geo-claude-skills](https://github.com/aaron-he-zhu/seo-geo-claude-skills) — 20 个独立 SEO/GEO 技能 |
-| **[marketing-skills](https://github.com/tokenaissance/marketing-skills)** | [kostja94](https://github.com/kostja94) | 源自 [marketing-skills](https://github.com/kostja94/marketing-skills) — 160+ 营销技能（GTM + SEO + GEO） |
-| **[pm-skills](https://github.com/tokenaissance/pm-skills)** | [phuryn](https://github.com/phuryn) | 源自 [pm-skills](https://github.com/phuryn/pm-skills) — 100+ PM 技能，含 gtm-strategy（上游 24.9K★） |
-| **[agent-toolkit](https://github.com/tokenaissance/agent-toolkit)** | [sanity-io](https://github.com/sanity-io) | 源自 [agent-toolkit](https://github.com/sanity-io/agent-toolkit) — seo-aeo-best-practices |
-| **[founder-skills](https://github.com/tokenaissance/founder-skills)** | [ognjengt](https://github.com/ognjengt) | 源自 [founder-skills](https://github.com/ognjengt/founder-skills) — 创始人市场进入计划 |
+### LayerFS
 
-#### 金融与加密
+**临时 Workspace，架在持久共享历史之上。** 每个智能体挂载一个完整可写的 Workspace，底
+座不复制；干完活，把它改的东西提交上去，然后走人 —— 历史留下。
 
-| 仓库 | 描述 |
-|------|------|
-| **[barker-stablecoin-skills](https://github.com/tokenaissance/barker-stablecoin-skills)** | DeFi 技能 — 稳定币收益情报，500+ 协议实时 APY |
-| **[serenity-aleabitoreddit](https://github.com/tokenaissance/serenity-aleabitoreddit)** | 金融技能 — Serenity 推文归档 + AI 供应链分析 |
+- **每一步都是一次 Commit。** `fs` 调用直接落成 Commit；一次 Bash 调用是挂载 → 执行 →
+  提交 → 卸载，命令改过的一切都在那一次 Commit 里。
+- **并行智能体是默认形态。** 从任意 Commit 拉 Branch，做完就 merge；永远不该冲突的文件
+  写进 `/.lww`。
+- **便宜到可以一直做。** 快照共享存储：上游基准里，一个真实项目的 157 个快照只占
+  100 MB，比 Btrfs + zstd 小 19.9 倍。
 
-#### 系统与架构
+LayerFS 是 [Ephemeral AI Lab](https://github.com/Ephemeral-AI-Lab/layerfs) 的开源项目；
+我们在 dsh 下用它、往上提交修复，并在[这里](https://github.com/tokenaissance/layerfs)
+镜像一份。
+**[layerfs.ai](https://layerfs.ai)** · **[文档](https://layerfs.ai/docs/)**
 
-| 仓库 | 描述 |
-|------|------|
-| **[mcp_excalidraw](https://github.com/tokenaissance/mcp_excalidraw)** | 系统设计技能 — Excalidraw MCP 用于架构和系统图 |
+<a id="plugins-zh"></a>
+## 插件
 
-#### 社交媒体
+宿主是 [DeepSeek Harness](https://github.com/deepseek-ai/deepseek-harness)（dsh），
+DeepSeek AI 的开源 harness。它的模型适配器、工具注册表、会话日志和智能体循环本身都是
+插件，所以加能力是往旁边挂一个 bundle —— 不是 fork 整个 harness。我们的插件就写在这里。
 
-| 仓库 | 描述 |
-|------|------|
-| **[social-media-skills](https://github.com/AISA-skills/social-media-skills)** | 社交媒体技能 — 为 AI 智能体提供内容创作、排程和分析能力 |
+### dsh-excalidraw
 
-#### 研究
+**把实时 Excalidraw 架构图放进 harness。** 让智能体画或刷新一张图；场景经 Excalidraw+
+MCP 服务端拉下来，作为真正的 `.excalidraw` 文件落进工作区，视图原地重绘 —— 不截图，不
+刷新页面。
 
-| 仓库 | 描述 |
-|------|------|
-| **[last30days-skill](https://github.com/tokenaissance/last30days-skill)** | 研究技能 — 跨 Reddit、X、YouTube、HN、Polymarket 与网络调研任意主题，并综合出有依据的摘要 |
+- 三个模型工具 —— `excalidraw_refresh`、`excalidraw_open`、`excalidraw_export` —— 和
+  视图读的是同一个场景存储。
+- 一个 bundle，两个落点：dsh 自带的视图（Chat / Trajectory 旁边），以及装了
+  dsh-better-sidebar 时的页签、文件查看器和文件图标。
+- 纯确定性的 Excalidraw→SVG 渲染器，运行时不依赖 `@excalidraw`；按 revision 轮询原地
+  重绘。212 个零依赖测试。
 
-#### 网页获取
+0.1 是只读视图 —— 平移、缩放、选中 —— 编辑仍然留在 Excalidraw 里。
 
-| 仓库 | 描述 |
-|------|------|
-| **[OpenCLI](https://github.com/tokenaissance/OpenCLI)** | WebFetch 技能 — 将任意网站变成 CLI，使用你已登录的浏览器 |
+**[github.com/tokenaissance/dsh-excalidraw](https://github.com/tokenaissance/dsh-excalidraw)** ·
+**[安装](https://github.com/tokenaissance/dsh-excalidraw#install)**
 
-#### 人生与灵性
+```sh
+dsh plugin --profile desktop add <path-to-checkout>
+```
 
-| 仓库 | 描述 |
-|------|------|
-| **[bazi-ziwei-skill](https://github.com/tokenaissance/bazi-ziwei-skill)** | AI 驱动的八字命理 + 紫微斗数分析 |
-| **[qiqing-liuyu](https://github.com/tokenaissance/qiqing-liuyu)** | 心灵技能 — 七情六欲，AI 智能体的情感与灵性智慧 |
+已发布到 **[`dsh-plugin` 话题](https://github.com/topics/dsh-plugin)** 下 —— dsh 用户
+就是这样找到插件的。
 
-#### 合集
+## 方法
 
-| 仓库 | 描述 |
-|------|------|
-| **[yichen-skills](https://github.com/tokenaissance/yichen-skills)** | Yichen 精选技能合集 |
+### clean-architecture
 
-### 模板
+**一套判断方法，不是脚手架：先诊断，再分层。** 四层、一个依赖方向，以及马斯克五步法，
+在过度设计上线之前把它删掉。
 
-从这里开始构建你自己的技能：
+- **与栈无关。** 同一套四层模型，映射到 Express、Next.js、Go 或 Spring，而不是复制模板。
+- **一道反过度设计的闸门。** 任何「上复杂方案」的建议，先走一遍提问 → 删除 → 简化 →
+  加速 → 自动化。
+- **能活下来的决策。** 架构决策附带 L2/L3 文档骨架，依赖规则的违反在文件头就能看见，而
+  不是埋在 import 里。
 
-| 仓库 | 描述 |
-|------|------|
-| **[hello-agents](https://github.com/tokenaissance/hello-agents)** | 智能体教程与教育 — 从零开始构建智能体 |
-| **[knowledge-wiki-template](https://github.com/tokenaissance/knowledge-wiki-template)** | 技能模板 — Tokenaissance 所有技能的规范蓝图 |
+它是我们自己仓库的默认评审技能。
+**[github.com/tokenaissance/clean-architecture](https://github.com/tokenaissance/clean-architecture)**
 
-### 插件
+## 技能
 
-| 仓库 | 描述 |
-|------|------|
-| **[cc-switch](https://github.com/tokenaissance/cc-switch)** | Claude Code 模型切换 — 跨平台桌面助手，支持多模型切换 |
+其余装进智能体的东西。它们大多由原作者维护上游；本组织里的仓库是与上游同步的 fork，
+功劳归上游。
 
-### 知识与基础设施
+- **智能体编程** —— [superpowers](https://github.com/tokenaissance/superpowers)、
+  [planning-with-files](https://github.com/tokenaissance/planning-with-files)、
+  [i-have-adhd](https://github.com/tokenaissance/i-have-adhd)、
+  [asd-ste100-skill](https://github.com/tokenaissance/asd-ste100-skill)
+- **设计与前端** —— [impeccable](https://github.com/tokenaissance/impeccable)、
+  [hallmark](https://github.com/tokenaissance/hallmark)、
+  [agent-html-skills](https://github.com/tokenaissance/agent-html-skills)、
+  [frontend-slides](https://github.com/tokenaissance/frontend-slides)
+- **商业、GTM 与销售** —— [startup-founder-skills](https://github.com/tokenaissance/startup-founder-skills)、
+  [gtm-engineer-skills](https://github.com/tokenaissance/gtm-engineer-skills)、
+  [Product-Manager-Skills](https://github.com/tokenaissance/Product-Manager-Skills)、
+  [pm-skills](https://github.com/tokenaissance/pm-skills)、
+  [mastering-technical-sales](https://github.com/tokenaissance/mastering-technical-sales)
+- **研究与上网** —— [last30days-skill](https://github.com/tokenaissance/last30days-skill)、
+  [ai-signal](https://github.com/tokenaissance/ai-signal)、
+  [OpenCLI](https://github.com/tokenaissance/OpenCLI)、
+  [firecrawl](https://github.com/tokenaissance/firecrawl)、
+  [searxng-helm](https://github.com/tokenaissance/searxng-helm)
+- **垂直领域** —— [barker-stablecoin-skills](https://github.com/tokenaissance/barker-stablecoin-skills)（DeFi）、
+  [serenity-aleabitoreddit](https://github.com/tokenaissance/serenity-aleabitoreddit)（供应链）、
+  [mcp_excalidraw](https://github.com/tokenaissance/mcp_excalidraw)（系统设计）、
+  [qiqing-liuyu](https://github.com/tokenaissance/qiqing-liuyu)
+- **合集与模板** —— [yichen-skills](https://github.com/tokenaissance/yichen-skills)、
+  [hello-agents](https://github.com/tokenaissance/hello-agents)、
+  [knowledge-wiki-template](https://github.com/tokenaissance/knowledge-wiki-template)
 
-| 仓库 | 描述 |
-|------|------|
-| **[firecrawl](https://github.com/tokenaissance/firecrawl)** | 网页抓取 — 大规模搜索、抓取并交互互联网 |
-| **[searxng-helm](https://github.com/tokenaissance/searxng-helm)** | 智能体搜索 — 自托管隐私元搜索引擎，用于智能体上网 |
-| **[contexto](https://github.com/tokenaissance/contexto)** | 持久化记忆引擎 — 为长运行 AI 智能体提供持久记忆 |
+**社区 Fork，功劳归原作者：**
 
-## 快速开始
+| 技能 | 作者 | 提供什么 |
+| --- | --- | --- |
+| [opc-skills](https://github.com/tokenaissance/opc-skills) | [ReScienceLab](https://github.com/ReScienceLab) | SEO / GEO 技能，上游 3.97 万次安装 |
+| [seo-geo-claude-skills](https://github.com/tokenaissance/seo-geo-claude-skills) | [aaron-he-zhu](https://github.com/aaron-he-zhu) | 20 个独立 SEO / GEO 技能 |
+| [marketing-skills](https://github.com/tokenaissance/marketing-skills) | [kostja94](https://github.com/kostja94) | 160+ 营销技能 |
+| [pm-skills](https://github.com/tokenaissance/pm-skills) | [phuryn](https://github.com/phuryn) | 100+ PM 技能，含 gtm-strategy |
+| [agent-toolkit](https://github.com/tokenaissance/agent-toolkit) | [sanity-io](https://github.com/sanity-io) | SEO / AEO 最佳实践 |
+| [founder-skills](https://github.com/tokenaissance/founder-skills) | [ognjengt](https://github.com/ognjengt) | 给创始人的市场进入计划 |
 
-访问 **[tokenaissance.com](https://tokenaissance.com)** 试用平台。想要构建技能？克隆上方任意技能仓库，阅读 `SKILL.md` 即可开始。
+<a id="start-zh"></a>
+## 从这里开始
 
-## 参与贡献
+1. **跑一个智能体。** 装上 FastAgent，打开 `http://localhost:18953`，配一个模型。
+   ```bash
+   curl -fsSL https://raw.githubusercontent.com/tokenaissance/fastagent/fastagent/install.sh | bash
+   fastagent
+   ```
+2. **给它一个文件系统。** [LayerFS × DSH](https://github.com/tokenaissance/dsh-layerfs#-install)
+   是 Ephemeral AI Lab 的插件，让智能体拥有 Branch、Workspace 和共享历史。
+3. **加能力，而不是加 fork。** 看
+   [`dsh-plugin` 话题](https://github.com/topics/dsh-plugin)，或者从上面任意一个
+   `SKILL.md` 开始。
+4. **用托管版本。** [tokenaissance.com](https://tokenaissance.com) 是同一个团队为金融与
+   科学领域交付的智能体。
 
-我们相信开放的智能体未来。无论你是构建新技能、改进 FastClaw 运行时，还是分享知识，都欢迎提交 PR。
+## 社区
 
-## 找到我们
-
-需要帮助？想提供反馈？我们很乐意与你建立联系。
+需要帮助，或者想一起做点什么？欢迎找我们。
 
 <p align="center">
   <a href="https://x.com/tokenaissance"><img src="https://img.shields.io/badge/X-@tokenaissance-black?style=for-the-badge&logo=x&logoColor=white" alt="X" /></a>
@@ -150,6 +203,8 @@
   <b>个人微信</b><br/>
   <img src="assets/wechat-qr.jpg" width="160" alt="WeChat QR" />
 </p>
+
+上面任意仓库都欢迎 issue 和 PR。
 
 ---
 <div align="center">
