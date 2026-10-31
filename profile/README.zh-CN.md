@@ -26,7 +26,7 @@
 | **运行时** | **[FastAgent](https://github.com/tokenaissance/fastagent)** | 一个 Go 单二进制：循环、工具、沙箱、渠道，跑在你自己的机器上。 |
 | **运行时** | **tokenaissance-pi-durable** | 同一件事放到 Cloudflare Workers + Durable Objects 上。私有，开发中。 |
 | **底座** | **[LayerFS](https://github.com/Ephemeral-AI-Lab/layerfs)** | 临时 Workspace 架在持久共享历史之上；智能体的每一步都是一个 Commit。 |
-| **插件** | **[dsh-layerfs](https://github.com/tokenaissance/dsh-layerfs)** | 把 LayerFS 装进 DeepSeek Harness 会话，在 Work / History 页签里实时画出来。 |
+| **插件** | **dsh-excalidraw** | 把实时 Excalidraw 图放进 DeepSeek Harness，以 bundle 形式交付，不 fork 宿主。 |
 | **方法** | **[clean-architecture](https://github.com/tokenaissance/clean-architecture)** | 四层分层、一个依赖方向，再加一道删掉过度设计的闸门。 |
 
 ## 运行时
@@ -85,31 +85,30 @@ LayerFS 是 [Ephemeral AI Lab](https://github.com/Ephemeral-AI-Lab/layerfs) 的�
 **[layerfs.ai](https://layerfs.ai)** · **[文档](https://layerfs.ai/docs/)**
 
 <a id="plugins-zh"></a>
-## DeepSeek Harness 插件
+## 插件
 
-[DeepSeek Harness](https://github.com/deepseek-ai/deepseek-harness) 没有特权内核：模型
-适配器、工具注册表、会话日志、智能体循环，全都是插件。我们也用同一种方式交付能力 ——
-不 fork、不打补丁，装进你已经在跑的 profile。
+宿主是 [DeepSeek Harness](https://github.com/deepseek-ai/deepseek-harness)（dsh），
+DeepSeek AI 的开源 harness。它的模型适配器、工具注册表、会话日志和智能体循环本身都是
+插件，所以加能力是往旁边挂一个 bundle —— 不是 fork 整个 harness。我们的插件就写在这里。
 
-### dsh-layerfs
+### dsh-excalidraw
 
-**每个智能体的 Branch，实时画出来。** 把 LayerFS 放进 dsh 会话：Bash 调用变成
-Workspace，Workspace 变成 Commit，对话里多出 **Work** 和 **History** 两个页签，把每个
-智能体（包括子智能体）做过的事画出来。
+**把实时 Excalidraw 架构图放进 harness。** 让智能体画或刷新一张图；场景经 Excalidraw+
+MCP 服务端拉下来，作为真正的 `.excalidraw` 文件落进工作区，视图原地重绘 —— 不截图，不
+刷新页面。
 
-- 在对话里拉 Branch、在 Sandbox 里试、合并、发布。
-- History 页签随 Commit 落地而生长 —— 没有一张是截图。
-- 一个 bundle 加一个插件宿主：没有改 dsh 的源码。
+- 三个模型工具 —— `excalidraw_refresh`、`excalidraw_open`、`excalidraw_export` —— 和
+  视图读的是同一个场景存储。
+- 一个 bundle，两个落点：dsh 自带的视图（Chat / Trajectory 旁边），以及装了
+  dsh-better-sidebar 时的页签、文件查看器和文件图标。
+- 纯确定性的 Excalidraw→SVG 渲染器，运行时不依赖 `@excalidraw`；按 revision 轮询原地
+  重绘。212 个零依赖测试。
 
-**[dsh-layerfs](https://github.com/tokenaissance/dsh-layerfs)** ·
-**[安装](https://github.com/tokenaissance/dsh-layerfs#-install)** ·
-**[LayerFS × DSH 文档](https://layerfs.ai/docs/integrations/dsh/)**
+0.1 是只读视图 —— 平移、缩放、选中 —— 编辑仍然留在 Excalidraw 里。
 
-在做中的还有：把通过 MCP 取回的 Excalidraw 场景渲染在侧边栏里的 Design 页签，不用刷新
-页面。
-
-插件统一发布在 **[`dsh-plugin` 话题](https://github.com/topics/dsh-plugin)** 下 —— dsh
-用户就是这样找到它们的。
+dsh-excalidraw 现在是 0.1，尚未公开。公开后会挂在
+**[`dsh-plugin` 话题](https://github.com/topics/dsh-plugin)** 下 —— dsh 用户就是这样
+找到插件的。
 
 ## 方法
 
@@ -178,7 +177,7 @@ Workspace，Workspace 变成 Commit，对话里多出 **Work** 和 **History** �
    fastagent
    ```
 2. **给它一个文件系统。** [LayerFS × DSH](https://github.com/tokenaissance/dsh-layerfs#-install)
-   让智能体拥有 Branch、Workspace 和共享历史。
+   是 Ephemeral AI Lab 的插件，让智能体拥有 Branch、Workspace 和共享历史。
 3. **加能力，而不是加 fork。** 看
    [`dsh-plugin` 话题](https://github.com/topics/dsh-plugin)，或者从上面任意一个
    `SKILL.md` 开始。
