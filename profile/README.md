@@ -24,7 +24,7 @@ because something breaks once an agent runs longer than one conversation.
 
 | Layer | Project | What it does |
 | --- | --- | --- |
-| **Runtime** | **[FastAgent](https://github.com/tokenaissance/fastagent)** (Go) | A single binary: the loop, the tools, the sandboxes and the channels, on your own machines. |
+| **Runtime** | **[FastAgent](https://github.com/tokenaissance/fastagent)** (Go) | A single binary for the loop, tools, sandboxes and channels — self-hosted on one machine, or cloud-native with per-tenant provisioning and metering. |
 | **Runtime** | **tokenaissance-pi-durable** (TypeScript · Cloudflare) | The same job at the edge, on Workers and Durable Objects. Private, in development. |
 | **Substrate** | **[LayerFS](https://github.com/Ephemeral-AI-Lab/layerfs)** (Rust · JavaScript SDK) | Ephemeral Workspaces over durable shared history; every step an agent takes is a Commit. |
 | **Plugins** | **[dsh-excalidraw](https://github.com/tokenaissance/dsh-excalidraw)** (JavaScript) | Live Excalidraw diagrams inside DeepSeek Harness, shipped as a bundle and not a fork. |
@@ -34,9 +34,9 @@ because something breaks once an agent runs longer than one conversation.
 
 ### FastAgent
 
-**A single Go binary that turns a model into an agent you host yourself.** The agent
-loop, the tools, the sandboxes, the channels and the admin dashboard run in one process;
-SQLite is the default store.
+**A single Go binary that turns a model into an agent — host it yourself, or run it as a
+service.** The agent loop, the tools, the sandboxes, the channels and the admin dashboard
+run in one process; SQLite is the default store.
 
 - **Any model.** OpenAI, Anthropic, DeepSeek, Mistral, Groq, Ollama, OpenRouter or any
   OpenAI-compatible endpoint, with a per-agent override of the system default.
@@ -47,6 +47,11 @@ SQLite is the default store.
 - **An API an application can call.** OpenAI-compatible `/v1/chat/completions` with
   streaming, an SSE chat endpoint, MCP servers, a JSON-RPC plugin system, and per-user
   quotas.
+- **Cloud-native when it has to be.** The Helm chart scales gateways with an HPA, keeps
+  workspace artifacts in object storage (S3, OSS, R2, MinIO) and runs multi-pod over
+  Postgres and Redis. The same build provisions a tenant, meters usage and enforces
+  quotas, so the hosted path is serverless for the customer: nothing to run, billed by
+  usage.
 
 ```bash
 curl -fsSL https://raw.githubusercontent.com/tokenaissance/fastagent/fastagent/install.sh | bash
