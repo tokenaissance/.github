@@ -118,6 +118,9 @@ dsh plugin --profile desktop add <path-to-checkout>
 
 ## 方法
 
+两套技能决定上面这些东西怎么做出来：一套管代码怎么分层，一套管工作流怎么变成可安装的
+技能。
+
 ### clean-architecture
 
 **一套判断方法，不是脚手架：先诊断，再分层。** 四层、一个依赖方向，以及马斯克五步法，
@@ -131,6 +134,20 @@ dsh plugin --profile desktop add <path-to-checkout>
 
 它是我们自己仓库的默认评审技能。
 **[github.com/tokenaissance/clean-architecture](https://github.com/tokenaissance/clean-architecture)**
+
+### fastagent-meta-skill
+
+**工作流要变成软件，而不是更长的提示词。** 进去的是一段 SOP、一份对话记录、一个旧技能
+或一个脚本，出来的东西能被发现、能可靠触发、能被校验、能安全发布。
+
+- **先找现成的，再造。** 动手前先找最接近的公共技能，再决定保留、改造、淘汰还是新造 ——
+  而不是重造一个更差的轮子。
+- **触发是测出来的，不是感觉。** 描述会拿真实提问跑一遍：写得宽了到处误触发，写得窄了
+  永远不被调用。当前版本背后有 23 个触发用例和 35 个单元测试。
+- **发布也算这一步。** 包校验、README、密钥扫描、PR、Release，最后用一次真实安装证明
+  这个包确实装得上。
+
+**[github.com/tokenaissance/fastagent-meta-skill](https://github.com/tokenaissance/fastagent-meta-skill)**
 
 ## 技能
 
