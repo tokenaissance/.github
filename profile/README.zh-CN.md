@@ -26,7 +26,7 @@
 | **运行时** | **[FastAgent](https://github.com/tokenaissance/fastagent)** | 一个 Go 单二进制：循环、工具、沙箱、渠道，跑在你自己的机器上。 |
 | **运行时** | **tokenaissance-pi-durable** | 同一件事放到 Cloudflare Workers + Durable Objects 上。私有，开发中。 |
 | **底座** | **[LayerFS](https://github.com/Ephemeral-AI-Lab/layerfs)** | 临时 Workspace 架在持久共享历史之上；智能体的每一步都是一个 Commit。 |
-| **插件** | **dsh-excalidraw** | 把实时 Excalidraw 图放进 DeepSeek Harness，以 bundle 形式交付，不 fork 宿主。 |
+| **插件** | **[dsh-excalidraw](https://github.com/tokenaissance/dsh-excalidraw)** | 把实时 Excalidraw 图放进 DeepSeek Harness，以 bundle 形式交付，不 fork 宿主。 |
 | **方法** | **[clean-architecture](https://github.com/tokenaissance/clean-architecture)** | 四层分层、一个依赖方向，再加一道删掉过度设计的闸门。 |
 
 ## 运行时
@@ -106,9 +106,15 @@ MCP 服务端拉下来，作为真正的 `.excalidraw` 文件落进工作区，�
 
 0.1 是只读视图 —— 平移、缩放、选中 —— 编辑仍然留在 Excalidraw 里。
 
-dsh-excalidraw 现在是 0.1，尚未公开。公开后会挂在
-**[`dsh-plugin` 话题](https://github.com/topics/dsh-plugin)** 下 —— dsh 用户就是这样
-找到插件的。
+**[github.com/tokenaissance/dsh-excalidraw](https://github.com/tokenaissance/dsh-excalidraw)** ·
+**[安装](https://github.com/tokenaissance/dsh-excalidraw#install)**
+
+```sh
+dsh plugin --profile desktop add <path-to-checkout>
+```
+
+已发布到 **[`dsh-plugin` 话题](https://github.com/topics/dsh-plugin)** 下 —— dsh 用户
+就是这样找到插件的。
 
 ## 方法
 
