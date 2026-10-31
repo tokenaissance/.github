@@ -28,7 +28,7 @@ because something breaks once an agent runs longer than one conversation.
 | **Runtime** | **tokenaissance-pi-durable** (TypeScript · Cloudflare) | The same job at the edge, on Workers and Durable Objects. Private, in development. |
 | **Substrate** | **[LayerFS](https://github.com/Ephemeral-AI-Lab/layerfs)** (Rust · JavaScript SDK) | Ephemeral Workspaces over durable shared history; every step an agent takes is a Commit. |
 | **Plugins** | **[dsh-excalidraw](https://github.com/tokenaissance/dsh-excalidraw)** (JavaScript) | Live Excalidraw diagrams inside DeepSeek Harness, shipped as a bundle and not a fork. |
-| **Method** | **[clean-architecture](https://github.com/tokenaissance/clean-architecture)** · **[fastagent-meta-skill](https://github.com/tokenaissance/fastagent-meta-skill)** | How the code is layered, and how a workflow becomes an installable skill. |
+| **Method** | **[clean-architecture](https://github.com/tokenaissance/clean-architecture)** · **[fastagent-meta-skill](https://github.com/tokenaissance/fastagent-meta-skill)** · **[impeccable](https://github.com/pbakaus/impeccable)** · **[hallmark](https://github.com/Nutlope/hallmark)** | How the code is layered, how a workflow becomes a skill, and how the interface is designed. |
 
 ## Runtimes
 
@@ -127,8 +127,9 @@ dsh users find plugins.
 
 ## Method
 
-Two skills decide how everything above is made: one for how the code is layered, one for
-how a workflow becomes an installable skill.
+Four skills decide how everything above is made: how the code is layered, how a workflow
+becomes an installable skill, and how the interface is designed. The first two are ours;
+the last two are upstream projects we run and keep in sync.
 
 ### clean-architecture
 
@@ -163,6 +164,34 @@ comes out.
 
 **[github.com/tokenaissance/fastagent-meta-skill](https://github.com/tokenaissance/fastagent-meta-skill)**
 
+### impeccable
+
+**Design guidance for coding agents, with a shared vocabulary.** One skill and 24 commands
+— `polish`, `audit`, `critique`, `distill`, `bolder`, `quieter` — a `PRODUCT.md` that
+records the audience and constraints once, and 61 deterministic detector rules that run
+without a model.
+
+- Every model was trained on the same SaaS templates: without guidance it produces the
+  same tells — Inter everywhere, purple-to-blue gradients, cards inside cards.
+- The rules are checkable rather than a matter of taste: the CLI and browser extension run
+  the detectors with no API key.
+
+**[github.com/tokenaissance/impeccable](https://github.com/tokenaissance/impeccable)** ·
+upstream [pbakaus/impeccable](https://github.com/pbakaus/impeccable)
+
+### hallmark
+
+**A design skill that refuses to look AI-generated.** It picks a macrostructure for the
+brief, dresses it in one of twenty-one themes, and runs 57 slop tests plus a self-critique
+before handing anything back.
+
+- Four verbs: build (the default), `audit`, `redesign`, and `study` — the last extracts the
+  design DNA of a page you admire instead of pixel-cloning it.
+- Two briefs produce two different sites, not colour-swaps of one template.
+
+**[github.com/tokenaissance/hallmark](https://github.com/tokenaissance/hallmark)** ·
+upstream [Nutlope/hallmark](https://github.com/Nutlope/hallmark) by Together AI
+
 ## Skills
 
 The rest of what we install into agents. Most are maintained upstream by their authors;
@@ -172,9 +201,7 @@ the repository here is a fork kept in sync, and the credit stays with the source
   [planning-with-files](https://github.com/tokenaissance/planning-with-files),
   [i-have-adhd](https://github.com/tokenaissance/i-have-adhd),
   [asd-ste100-skill](https://github.com/tokenaissance/asd-ste100-skill)
-- **Design and frontend** — [impeccable](https://github.com/tokenaissance/impeccable),
-  [hallmark](https://github.com/tokenaissance/hallmark),
-  [agent-html-skills](https://github.com/tokenaissance/agent-html-skills),
+- **Design and frontend** — [agent-html-skills](https://github.com/tokenaissance/agent-html-skills),
   [frontend-slides](https://github.com/tokenaissance/frontend-slides)
 - **Business, GTM and sales** — [startup-founder-skills](https://github.com/tokenaissance/startup-founder-skills),
   [gtm-engineer-skills](https://github.com/tokenaissance/gtm-engineer-skills),
