@@ -177,46 +177,6 @@ dsh plugin --profile desktop add <path-to-checkout>
 **[github.com/tokenaissance/hallmark](https://github.com/tokenaissance/hallmark)** ·
 上游 [Nutlope/hallmark](https://github.com/Nutlope/hallmark)（Together AI）
 
-## 技能
-
-其余装进智能体的东西。它们大多由原作者维护上游；本组织里的仓库是与上游同步的 fork，
-功劳归上游。
-
-- **智能体编程** —— [superpowers](https://github.com/tokenaissance/superpowers)、
-  [planning-with-files](https://github.com/tokenaissance/planning-with-files)、
-  [i-have-adhd](https://github.com/tokenaissance/i-have-adhd)、
-  [asd-ste100-skill](https://github.com/tokenaissance/asd-ste100-skill)
-- **设计与前端** —— [agent-html-skills](https://github.com/tokenaissance/agent-html-skills)、
-  [frontend-slides](https://github.com/tokenaissance/frontend-slides)
-- **商业、GTM 与销售** —— [startup-founder-skills](https://github.com/tokenaissance/startup-founder-skills)、
-  [gtm-engineer-skills](https://github.com/tokenaissance/gtm-engineer-skills)、
-  [Product-Manager-Skills](https://github.com/tokenaissance/Product-Manager-Skills)、
-  [pm-skills](https://github.com/tokenaissance/pm-skills)、
-  [mastering-technical-sales](https://github.com/tokenaissance/mastering-technical-sales)
-- **研究与上网** —— [last30days-skill](https://github.com/tokenaissance/last30days-skill)、
-  [ai-signal](https://github.com/tokenaissance/ai-signal)、
-  [OpenCLI](https://github.com/tokenaissance/OpenCLI)、
-  [firecrawl](https://github.com/tokenaissance/firecrawl)、
-  [searxng-helm](https://github.com/tokenaissance/searxng-helm)
-- **垂直领域** —— [barker-stablecoin-skills](https://github.com/tokenaissance/barker-stablecoin-skills)（DeFi）、
-  [serenity-aleabitoreddit](https://github.com/tokenaissance/serenity-aleabitoreddit)（供应链）、
-  [mcp_excalidraw](https://github.com/tokenaissance/mcp_excalidraw)（系统设计）、
-  [qiqing-liuyu](https://github.com/tokenaissance/qiqing-liuyu)
-- **合集与模板** —— [yichen-skills](https://github.com/tokenaissance/yichen-skills)、
-  [hello-agents](https://github.com/tokenaissance/hello-agents)、
-  [knowledge-wiki-template](https://github.com/tokenaissance/knowledge-wiki-template)
-
-**社区 Fork，功劳归原作者：**
-
-| 技能 | 作者 | 提供什么 |
-| --- | --- | --- |
-| [opc-skills](https://github.com/tokenaissance/opc-skills) | [ReScienceLab](https://github.com/ReScienceLab) | SEO / GEO 技能，上游 3.97 万次安装 |
-| [seo-geo-claude-skills](https://github.com/tokenaissance/seo-geo-claude-skills) | [aaron-he-zhu](https://github.com/aaron-he-zhu) | 20 个独立 SEO / GEO 技能 |
-| [marketing-skills](https://github.com/tokenaissance/marketing-skills) | [kostja94](https://github.com/kostja94) | 160+ 营销技能 |
-| [pm-skills](https://github.com/tokenaissance/pm-skills) | [phuryn](https://github.com/phuryn) | 100+ PM 技能，含 gtm-strategy |
-| [agent-toolkit](https://github.com/tokenaissance/agent-toolkit) | [sanity-io](https://github.com/sanity-io) | SEO / AEO 最佳实践 |
-| [founder-skills](https://github.com/tokenaissance/founder-skills) | [ognjengt](https://github.com/ognjengt) | 给创始人的市场进入计划 |
-
 <a id="start-zh"></a>
 ## 从这里开始
 
@@ -228,8 +188,7 @@ dsh plugin --profile desktop add <path-to-checkout>
 2. **给它一个文件系统。** [LayerFS × DSH](https://github.com/tokenaissance/dsh-layerfs#-install)
    是 Ephemeral AI Lab 的插件，让智能体拥有 Branch、Workspace 和共享历史。
 3. **加能力，而不是加 fork。** 看
-   [`dsh-plugin` 话题](https://github.com/topics/dsh-plugin)，或者从上面任意一个
-   `SKILL.md` 开始。
+   [`dsh-plugin` 话题](https://github.com/topics/dsh-plugin)，或者从上面那个插件开始。
 4. **用托管版本。** [tokenaissance.com](https://tokenaissance.com) 是同一个团队为金融与
    科学领域交付的智能体。
 
