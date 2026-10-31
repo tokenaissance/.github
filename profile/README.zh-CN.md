@@ -27,7 +27,7 @@
 | **运行时** | **tokenaissance-pi-durable**（TypeScript · Cloudflare） | 同一件事放到边缘：Workers + Durable Objects。私有，开发中。 |
 | **底座** | **[LayerFS](https://github.com/Ephemeral-AI-Lab/layerfs)**（Rust · JavaScript SDK） | 临时 Workspace 架在持久共享历史之上；智能体的每一步都是一个 Commit。 |
 | **插件** | **[dsh-excalidraw](https://github.com/tokenaissance/dsh-excalidraw)**（JavaScript） | 把实时 Excalidraw 图放进 DeepSeek Harness，以 bundle 形式交付，不 fork 宿主。 |
-| **方法** | **[clean-architecture](https://github.com/tokenaissance/clean-architecture)** · **[fastagent-meta-skill](https://github.com/tokenaissance/fastagent-meta-skill)** | 代码怎么分层，工作流怎么变成可安装的技能。 |
+| **方法** | **[clean-architecture](https://github.com/tokenaissance/clean-architecture)** · **[fastagent-meta-skill](https://github.com/tokenaissance/fastagent-meta-skill)** · **[impeccable](https://github.com/pbakaus/impeccable)** · **[hallmark](https://github.com/Nutlope/hallmark)** | 代码怎么分层，工作流怎么变成技能，界面怎么设计。 |
 
 ## 运行时
 
@@ -118,8 +118,8 @@ dsh plugin --profile desktop add <path-to-checkout>
 
 ## 方法
 
-两套技能决定上面这些东西怎么做出来：一套管代码怎么分层，一套管工作流怎么变成可安装的
-技能。
+四套技能决定上面这些东西怎么做出来：代码怎么分层、工作流怎么变成可安装的技能、界面怎么
+设计。前两套是我们的；后两套是上游项目，我们 fork 过来保持同步。
 
 ### clean-architecture
 
@@ -149,6 +149,31 @@ dsh plugin --profile desktop add <path-to-checkout>
 
 **[github.com/tokenaissance/fastagent-meta-skill](https://github.com/tokenaissance/fastagent-meta-skill)**
 
+### impeccable
+
+**给编码 agent 的设计语言，而且带一套词汇表。** 一个 skill + 24 个命令（`polish`、`audit`、
+`critique`、`distill`、`bolder`、`quieter`…），一次 `/impeccable init` 把受众和约束写进
+`PRODUCT.md`，外加 61 条不调用模型也能跑的确定性检测规则。
+
+- 所有模型都在同一批 SaaS 模板上训练过：不指点，就长出同一批痕迹 —— 处处 Inter、紫蓝渐变、
+  卡片套卡片。
+- 规则是可核对的，不靠品味：CLI 和浏览器扩展在本地跑检测，不需要 API key。
+
+**[github.com/tokenaissance/impeccable](https://github.com/tokenaissance/impeccable)** ·
+上游 [pbakaus/impeccable](https://github.com/pbakaus/impeccable)
+
+### hallmark
+
+**拒绝看起来像 AI 生成的设计。** 先针对 brief 选一个宏观结构，再套 21 个主题之一，过 57
+道「AI 味」检查加一次出稿自评，才交出东西。
+
+- 四个动词：新建（默认）、`audit`、`redesign`、`study` —— 最后一个是从你喜欢的页面里抽
+  设计 DNA，而不是像素级抄袭。
+- 两个不同的 brief 会长出两个不同的站，而不是同一个模板换配色。
+
+**[github.com/tokenaissance/hallmark](https://github.com/tokenaissance/hallmark)** ·
+上游 [Nutlope/hallmark](https://github.com/Nutlope/hallmark)（Together AI）
+
 ## 技能
 
 其余装进智能体的东西。它们大多由原作者维护上游；本组织里的仓库是与上游同步的 fork，
@@ -158,9 +183,7 @@ dsh plugin --profile desktop add <path-to-checkout>
   [planning-with-files](https://github.com/tokenaissance/planning-with-files)、
   [i-have-adhd](https://github.com/tokenaissance/i-have-adhd)、
   [asd-ste100-skill](https://github.com/tokenaissance/asd-ste100-skill)
-- **设计与前端** —— [impeccable](https://github.com/tokenaissance/impeccable)、
-  [hallmark](https://github.com/tokenaissance/hallmark)、
-  [agent-html-skills](https://github.com/tokenaissance/agent-html-skills)、
+- **设计与前端** —— [agent-html-skills](https://github.com/tokenaissance/agent-html-skills)、
   [frontend-slides](https://github.com/tokenaissance/frontend-slides)
 - **商业、GTM 与销售** —— [startup-founder-skills](https://github.com/tokenaissance/startup-founder-skills)、
   [gtm-engineer-skills](https://github.com/tokenaissance/gtm-engineer-skills)、
