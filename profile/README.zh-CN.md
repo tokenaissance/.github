@@ -23,11 +23,11 @@
 
 | 层 | 项目 | 做什么 |
 | --- | --- | --- |
-| **运行时** | **[FastAgent](https://github.com/tokenaissance/fastagent)** | 一个 Go 单二进制：循环、工具、沙箱、渠道，跑在你自己的机器上。 |
-| **运行时** | **tokenaissance-pi-durable** | 同一件事放到 Cloudflare Workers + Durable Objects 上。私有，开发中。 |
-| **底座** | **[LayerFS](https://github.com/Ephemeral-AI-Lab/layerfs)** | 临时 Workspace 架在持久共享历史之上；智能体的每一步都是一个 Commit。 |
-| **插件** | **[dsh-excalidraw](https://github.com/tokenaissance/dsh-excalidraw)** | 把实时 Excalidraw 图放进 DeepSeek Harness，以 bundle 形式交付，不 fork 宿主。 |
-| **方法** | **[clean-architecture](https://github.com/tokenaissance/clean-architecture)** | 四层分层、一个依赖方向，再加一道删掉过度设计的闸门。 |
+| **运行时** | **[FastAgent](https://github.com/tokenaissance/fastagent)**（Go） | 一个单二进制：循环、工具、沙箱、渠道，跑在你自己的机器上。 |
+| **运行时** | **tokenaissance-pi-durable**（TypeScript · Cloudflare） | 同一件事放到边缘：Workers + Durable Objects。私有，开发中。 |
+| **底座** | **[LayerFS](https://github.com/Ephemeral-AI-Lab/layerfs)**（Rust · JavaScript SDK） | 临时 Workspace 架在持久共享历史之上；智能体的每一步都是一个 Commit。 |
+| **插件** | **[dsh-excalidraw](https://github.com/tokenaissance/dsh-excalidraw)**（JavaScript） | 把实时 Excalidraw 图放进 DeepSeek Harness，以 bundle 形式交付，不 fork 宿主。 |
+| **方法** | **[clean-architecture](https://github.com/tokenaissance/clean-architecture)** · **[fastagent-meta-skill](https://github.com/tokenaissance/fastagent-meta-skill)** | 代码怎么分层，工作流怎么变成可安装的技能。 |
 
 ## 运行时
 
