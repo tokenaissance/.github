@@ -23,7 +23,7 @@
 
 | 层 | 项目 | 做什么 |
 | --- | --- | --- |
-| **运行时** | **[FastAgent](https://github.com/tokenaissance/fastagent)**（Go） | 一个单二进制：循环、工具、沙箱、渠道，跑在你自己的机器上。 |
+| **运行时** | **[FastAgent](https://github.com/tokenaissance/fastagent)**（Go） | 一个单二进制跑循环、工具、沙箱和渠道 —— 一台机器上自托管，或云原生：按租户开通、计量、限配额。 |
 | **运行时** | **tokenaissance-pi-durable**（TypeScript · Cloudflare） | 同一件事放到边缘：Workers + Durable Objects。私有，开发中。 |
 | **底座** | **[LayerFS](https://github.com/Ephemeral-AI-Lab/layerfs)**（Rust · JavaScript SDK） | 临时 Workspace 架在持久共享历史之上；智能体的每一步都是一个 Commit。 |
 | **插件** | **[dsh-excalidraw](https://github.com/tokenaissance/dsh-excalidraw)**（JavaScript） | 把实时 Excalidraw 图放进 DeepSeek Harness，以 bundle 形式交付，不 fork 宿主。 |
@@ -33,8 +33,8 @@
 
 ### FastAgent
 
-**一个 Go 单二进制，把模型变成你自己托管的智能体。** 智能体循环、工具、沙箱、渠道和
-管理后台都跑在一个进程里；默认存储是 SQLite。
+**一个 Go 单二进制，把模型变成智能体 —— 自己托管，或者当服务来跑。** 智能体循环、工具、
+沙箱、渠道和管理后台都跑在一个进程里；默认存储是 SQLite。
 
 - **任何模型。** OpenAI、Anthropic、DeepSeek、Mistral、Groq、Ollama、OpenRouter，或任何
   OpenAI 兼容端点；单个智能体可以覆盖系统默认。
@@ -44,6 +44,9 @@
   会话 id 隔离。
 - **应用能直接调的 API。** OpenAI 兼容的流式 `/v1/chat/completions`、SSE 聊天端点、MCP
   服务端、JSON-RPC 插件系统，以及按用户计的配额。
+- **该云原生时就是云原生。** Helm chart 用 HPA 扩 gateway，工作区产物放对象存储（S3、
+  OSS、R2、MinIO），多副本用 Postgres + Redis 协调；同一套代码能给租户开通、计量用量、按
+  配额限流 —— 托管路径对客户就是 serverless：不用自己跑服务器，按用量计费。
 
 ```bash
 curl -fsSL https://raw.githubusercontent.com/tokenaissance/fastagent/fastagent/install.sh | bash
