@@ -27,7 +27,7 @@ because something breaks once an agent runs longer than one conversation.
 | **Runtime** | **[FastAgent](https://github.com/tokenaissance/fastagent)** | A single Go binary: the loop, the tools, the sandboxes and the channels, on your own machines. |
 | **Runtime** | **tokenaissance-pi-durable** | The same job on Cloudflare Workers and Durable Objects. Private, in development. |
 | **Substrate** | **[LayerFS](https://github.com/Ephemeral-AI-Lab/layerfs)** | Ephemeral Workspaces over durable shared history; every step an agent takes is a Commit. |
-| **Plugins** | **[dsh-layerfs](https://github.com/tokenaissance/dsh-layerfs)** | LayerFS inside a DeepSeek Harness session, drawn live in the Work and History tabs. |
+| **Plugins** | **dsh-excalidraw** | Live Excalidraw diagrams inside DeepSeek Harness, shipped as a bundle and not a fork. |
 | **Method** | **[clean-architecture](https://github.com/tokenaissance/clean-architecture)** | Four layers, one dependency direction, and a gate that deletes over-engineering. |
 
 ## Runtimes
@@ -92,32 +92,32 @@ under dsh, send fixes upstream, and mirror it
 **[layerfs.ai](https://layerfs.ai)** · **[Docs](https://layerfs.ai/docs/)**
 
 <a id="plugins"></a>
-## Plugins for DeepSeek Harness
+## Plugins
 
-[DeepSeek Harness](https://github.com/deepseek-ai/deepseek-harness) has no privileged
-core: the model adapter, the tool registry, the session log and the agent loop are all
-plugins. We ship capability the same way — no fork, no patch, installed into the profile
-you already run.
+The host is [DeepSeek Harness](https://github.com/deepseek-ai/deepseek-harness) (dsh),
+DeepSeek AI's open-source harness. Its model adapter, tool registry, session log and
+agent loop are all plugins, so capability is added by mounting a bundle beside them —
+never by forking the harness. That is where our plugin work goes.
 
-### dsh-layerfs
+### dsh-excalidraw
 
-**Every agent's Branch, drawn live.** LayerFS inside a dsh session: Bash calls become
-Workspaces, Workspaces become Commits, and the conversation grows **Work** and
-**History** tabs that draw what each agent did, subagents included.
+**Live Excalidraw architecture inside the harness.** Ask the agent to draw or refresh the
+diagram; the scene is pulled through the Excalidraw+ MCP server, stored in the workspace
+as a real `.excalidraw` file, and a viewer re-renders it in place — no screenshot, no
+page refresh.
 
-- Fork a Branch, test it in a Sandbox, merge and publish from the conversation.
-- The History tab grows as commits land — nothing is a screenshot.
-- A bundle plus a plugin host: no dsh source is modified.
+- Three model tools — `excalidraw_refresh`, `excalidraw_open`, `excalidraw_export` —
+  over the same scene store the view reads.
+- One bundle, two surfaces: dsh's own view beside Chat and Trajectory, and, when
+  dsh-better-sidebar is installed, its tab, file viewer and file icon.
+- A deterministic Excalidraw→SVG renderer with no `@excalidraw` runtime dependency; a
+  revision poll re-renders in place. 212 zero-dependency tests.
 
-**[dsh-layerfs](https://github.com/tokenaissance/dsh-layerfs)** ·
-**[Install](https://github.com/tokenaissance/dsh-layerfs#-install)** ·
-**[LayerFS × DSH docs](https://layerfs.ai/docs/integrations/dsh/)**
+0.1 is a read-only viewer — pan, zoom, select — and editing stays in Excalidraw.
 
-More in progress: a Design tab that renders Excalidraw scenes pulled through MCP, in the
-sidebar, with no page refresh.
-
-Plugins are published under the **[`dsh-plugin` topic](https://github.com/topics/dsh-plugin)** —
-the way dsh users find them.
+dsh-excalidraw is at 0.1 and not published yet. When it is, it lands under the
+**[`dsh-plugin` topic](https://github.com/topics/dsh-plugin)** — how dsh users find
+plugins.
 
 ## Method
 
@@ -189,7 +189,7 @@ the repository here is a fork kept in sync, and the credit stays with the source
    fastagent
    ```
 2. **Put a filesystem under it.** [LayerFS × DSH](https://github.com/tokenaissance/dsh-layerfs#-install)
-   gives agents Branches, Workspaces and a shared history.
+   — Ephemeral AI Lab's plugin — gives agents Branches, Workspaces and a shared history.
 3. **Add a capability instead of a fork.** Read the [`dsh-plugin` topic](https://github.com/topics/dsh-plugin),
    or start from any `SKILL.md` above.
 4. **Use the hosted product.** [tokenaissance.com](https://tokenaissance.com) is where the
