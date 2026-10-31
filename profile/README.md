@@ -197,46 +197,6 @@ before handing anything back.
 **[github.com/tokenaissance/hallmark](https://github.com/tokenaissance/hallmark)** ·
 upstream [Nutlope/hallmark](https://github.com/Nutlope/hallmark) by Together AI
 
-## Skills
-
-The rest of what we install into agents. Most are maintained upstream by their authors;
-the repository here is a fork kept in sync, and the credit stays with the source.
-
-- **Agentic coding** — [superpowers](https://github.com/tokenaissance/superpowers),
-  [planning-with-files](https://github.com/tokenaissance/planning-with-files),
-  [i-have-adhd](https://github.com/tokenaissance/i-have-adhd),
-  [asd-ste100-skill](https://github.com/tokenaissance/asd-ste100-skill)
-- **Design and frontend** — [agent-html-skills](https://github.com/tokenaissance/agent-html-skills),
-  [frontend-slides](https://github.com/tokenaissance/frontend-slides)
-- **Business, GTM and sales** — [startup-founder-skills](https://github.com/tokenaissance/startup-founder-skills),
-  [gtm-engineer-skills](https://github.com/tokenaissance/gtm-engineer-skills),
-  [Product-Manager-Skills](https://github.com/tokenaissance/Product-Manager-Skills),
-  [pm-skills](https://github.com/tokenaissance/pm-skills),
-  [mastering-technical-sales](https://github.com/tokenaissance/mastering-technical-sales)
-- **Research and the web** — [last30days-skill](https://github.com/tokenaissance/last30days-skill),
-  [ai-signal](https://github.com/tokenaissance/ai-signal),
-  [OpenCLI](https://github.com/tokenaissance/OpenCLI),
-  [firecrawl](https://github.com/tokenaissance/firecrawl),
-  [searxng-helm](https://github.com/tokenaissance/searxng-helm)
-- **Domain** — [barker-stablecoin-skills](https://github.com/tokenaissance/barker-stablecoin-skills) (DeFi),
-  [serenity-aleabitoreddit](https://github.com/tokenaissance/serenity-aleabitoreddit) (supply chain),
-  [mcp_excalidraw](https://github.com/tokenaissance/mcp_excalidraw) (system design),
-  [qiqing-liuyu](https://github.com/tokenaissance/qiqing-liuyu)
-- **Collections and templates** — [yichen-skills](https://github.com/tokenaissance/yichen-skills),
-  [hello-agents](https://github.com/tokenaissance/hello-agents),
-  [knowledge-wiki-template](https://github.com/tokenaissance/knowledge-wiki-template)
-
-**Community forks, credited to their authors:**
-
-| Skill | Author | What it adds |
-| --- | --- | --- |
-| [opc-skills](https://github.com/tokenaissance/opc-skills) | [ReScienceLab](https://github.com/ReScienceLab) | SEO / GEO skills, 39.7K installs upstream |
-| [seo-geo-claude-skills](https://github.com/tokenaissance/seo-geo-claude-skills) | [aaron-he-zhu](https://github.com/aaron-he-zhu) | 20 standalone SEO / GEO skills |
-| [marketing-skills](https://github.com/tokenaissance/marketing-skills) | [kostja94](https://github.com/kostja94) | 160+ marketing skills |
-| [pm-skills](https://github.com/tokenaissance/pm-skills) | [phuryn](https://github.com/phuryn) | 100+ PM skills, including gtm-strategy |
-| [agent-toolkit](https://github.com/tokenaissance/agent-toolkit) | [sanity-io](https://github.com/sanity-io) | SEO / AEO best practices |
-| [founder-skills](https://github.com/tokenaissance/founder-skills) | [ognjengt](https://github.com/ognjengt) | Go-to-market plans for founders |
-
 <a id="start"></a>
 ## Start here
 
@@ -248,7 +208,7 @@ the repository here is a fork kept in sync, and the credit stays with the source
 2. **Put a filesystem under it.** [LayerFS × DSH](https://github.com/tokenaissance/dsh-layerfs#-install)
    — Ephemeral AI Lab's plugin — gives agents Branches, Workspaces and a shared history.
 3. **Add a capability instead of a fork.** Read the [`dsh-plugin` topic](https://github.com/topics/dsh-plugin),
-   or start from any `SKILL.md` above.
+   or start from the plugin above.
 4. **Use the hosted product.** [tokenaissance.com](https://tokenaissance.com) is where the
    same team ships agents for finance and science.
 
