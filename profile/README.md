@@ -24,11 +24,11 @@ because something breaks once an agent runs longer than one conversation.
 
 | Layer | Project | What it does |
 | --- | --- | --- |
-| **Runtime** | **[FastAgent](https://github.com/tokenaissance/fastagent)** | A single Go binary: the loop, the tools, the sandboxes and the channels, on your own machines. |
-| **Runtime** | **tokenaissance-pi-durable** | The same job on Cloudflare Workers and Durable Objects. Private, in development. |
-| **Substrate** | **[LayerFS](https://github.com/Ephemeral-AI-Lab/layerfs)** | Ephemeral Workspaces over durable shared history; every step an agent takes is a Commit. |
-| **Plugins** | **[dsh-excalidraw](https://github.com/tokenaissance/dsh-excalidraw)** | Live Excalidraw diagrams inside DeepSeek Harness, shipped as a bundle and not a fork. |
-| **Method** | **[clean-architecture](https://github.com/tokenaissance/clean-architecture)** | Four layers, one dependency direction, and a gate that deletes over-engineering. |
+| **Runtime** | **[FastAgent](https://github.com/tokenaissance/fastagent)** (Go) | A single binary: the loop, the tools, the sandboxes and the channels, on your own machines. |
+| **Runtime** | **tokenaissance-pi-durable** (TypeScript · Cloudflare) | The same job at the edge, on Workers and Durable Objects. Private, in development. |
+| **Substrate** | **[LayerFS](https://github.com/Ephemeral-AI-Lab/layerfs)** (Rust · JavaScript SDK) | Ephemeral Workspaces over durable shared history; every step an agent takes is a Commit. |
+| **Plugins** | **[dsh-excalidraw](https://github.com/tokenaissance/dsh-excalidraw)** (JavaScript) | Live Excalidraw diagrams inside DeepSeek Harness, shipped as a bundle and not a fork. |
+| **Method** | **[clean-architecture](https://github.com/tokenaissance/clean-architecture)** · **[fastagent-meta-skill](https://github.com/tokenaissance/fastagent-meta-skill)** | How the code is layered, and how a workflow becomes an installable skill. |
 
 ## Runtimes
 
