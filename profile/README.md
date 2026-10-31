@@ -27,7 +27,7 @@ because something breaks once an agent runs longer than one conversation.
 | **Runtime** | **[FastAgent](https://github.com/tokenaissance/fastagent)** | A single Go binary: the loop, the tools, the sandboxes and the channels, on your own machines. |
 | **Runtime** | **tokenaissance-pi-durable** | The same job on Cloudflare Workers and Durable Objects. Private, in development. |
 | **Substrate** | **[LayerFS](https://github.com/Ephemeral-AI-Lab/layerfs)** | Ephemeral Workspaces over durable shared history; every step an agent takes is a Commit. |
-| **Plugins** | **dsh-excalidraw** | Live Excalidraw diagrams inside DeepSeek Harness, shipped as a bundle and not a fork. |
+| **Plugins** | **[dsh-excalidraw](https://github.com/tokenaissance/dsh-excalidraw)** | Live Excalidraw diagrams inside DeepSeek Harness, shipped as a bundle and not a fork. |
 | **Method** | **[clean-architecture](https://github.com/tokenaissance/clean-architecture)** | Four layers, one dependency direction, and a gate that deletes over-engineering. |
 
 ## Runtimes
@@ -115,9 +115,15 @@ page refresh.
 
 0.1 is a read-only viewer — pan, zoom, select — and editing stays in Excalidraw.
 
-dsh-excalidraw is at 0.1 and not published yet. When it is, it lands under the
-**[`dsh-plugin` topic](https://github.com/topics/dsh-plugin)** — how dsh users find
-plugins.
+**[github.com/tokenaissance/dsh-excalidraw](https://github.com/tokenaissance/dsh-excalidraw)** ·
+**[Install](https://github.com/tokenaissance/dsh-excalidraw#install)**
+
+```sh
+dsh plugin --profile desktop add <path-to-checkout>
+```
+
+Published under the **[`dsh-plugin` topic](https://github.com/topics/dsh-plugin)** — how
+dsh users find plugins.
 
 ## Method
 
