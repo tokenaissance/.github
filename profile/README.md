@@ -127,6 +127,9 @@ dsh users find plugins.
 
 ## Method
 
+Two skills decide how everything above is made: one for how the code is layered, one for
+how a workflow becomes an installable skill.
+
 ### clean-architecture
 
 **A decision method, not a scaffold: diagnose first, then layer.** Four layers, one
@@ -143,6 +146,22 @@ it ships.
 
 It is the default review skill in our own repositories.
 **[github.com/tokenaissance/clean-architecture](https://github.com/tokenaissance/clean-architecture)**
+
+### fastagent-meta-skill
+
+**A workflow becomes software, not a longer prompt.** An SOP, a transcript, an old skill
+or a script goes in; a package that is discovered, triggered, validated and published
+comes out.
+
+- **Research before creating.** It finds the closest existing skills first, then keeps,
+  adapts, rejects or invents — instead of rebuilding a worse wheel.
+- **Trigger eval, not vibes.** Descriptions are tested against real prompts: written too
+  broadly a skill misfires everywhere, too narrowly it never runs. 23 trigger cases and
+  35 unit tests back the current release.
+- **Shipping is part of the work.** Package validation, README, secret scan, PR, Release,
+  and an install proof that the published package actually installs.
+
+**[github.com/tokenaissance/fastagent-meta-skill](https://github.com/tokenaissance/fastagent-meta-skill)**
 
 ## Skills
 
